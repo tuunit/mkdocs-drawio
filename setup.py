@@ -9,7 +9,7 @@ def read(name):
 
 setup(
     name="mkdocs-drawio-file",
-    version="1.5.2",
+    version="1.5.3",
     packages=find_packages(),
     url="https://github.com/onixpro/mkdocs-drawio-file",
     license="MIT",
@@ -18,7 +18,7 @@ setup(
     description="MkDocs plugin to embed drawio files",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
-    install_requires=["mkdocs","beautifulsoup4","lxml"],
+    install_requires=["mkdocs", "beautifulsoup4", "lxml"],
     entry_points={"mkdocs.plugins": [
         "drawio_file = mkdocs_drawio_file:DrawioFilePlugin",]},
     classifiers=[
