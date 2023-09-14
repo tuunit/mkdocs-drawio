@@ -2,10 +2,13 @@ site_name: test_mkdocs_drawio_file
 docs_dir: docs
 edit_uri: blob/master/example/
 
-nav:
-  - test: 'index.md'
-  - test2: 'test/test2.md'
-  
+# use_directory_urls: false
+
+# nav:
+#   - test: 'index.md'
+#   - test2: 'test/test2.md'
+#   - test3: 'test/test3/index.md'
+
 plugins:
     - search
     - drawio_file
