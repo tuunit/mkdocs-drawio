@@ -2,7 +2,8 @@
 [![Publish Badge](https://github.com/tuunit/mkdocs-drawio/workflows/Publish/badge.svg)](https://github.com/tuunit/mkdocs-drawio/actions)
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
 
-[Buy Sergey a 🍜](https://www.buymeacoffee.com/SergeyLukin)
+[Buy Sergey a 🍜](https://www.buymeacoffee.com/SergeyLukin) 
+Sergey (onixpro) is the original creator of this plugin. Repo can be found [here.](https://github.com/onixpro/mkdocs-drawio-file)
 
 ## Features
 This plugin enables you to embed interactive drawio diagrams in your documentation. Simply add your files like you would any other image:
