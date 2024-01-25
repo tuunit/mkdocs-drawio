@@ -1,37 +1,36 @@
-# MkDocs Plugin for embedding Diagrams.net (Draw.io)
+# MkDocs Plugin for embedding Drawio files
+[![](https://github.com/tuunit/mkdocs-drawio/workflows/Publish/badge.svg)](https://github.com/tuunit/mkdocs-drawio/actions)
+[![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
 
-[![deployment badge](https://github.com/onixpro/mkdocs-drawio-file/workflows/Deploy/badge.svg)](https://github.com/onixpro/mkdocs-drawio-file/actions)
-[![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio-file)](https://pypi.org/project/mkdocs-drawio-file/)
-
-[Buy me a 🍜](https://www.buymeacoffee.com/SergeyLukin)
+[Buy Sergey a 🍜](https://www.buymeacoffee.com/SergeyLukin)
 
 ## Features
-
-This plugin enables you to embed interactive drawio diagrams in your documentation. Simple add your files like you would for any other image type:
+This plugin enables you to embed interactive drawio diagrams in your documentation. Simply add your files like you would any other image:
 
 ```markdown
 ![](my-diagram.drawio)
 ```
 
-Additionally this plugin supports multi page diagrams by using the `alt` text:
+Additionally this plugin supports multi page diagrams by using the `alt` text to select the pages by name:
 
 ```markdown
 ![Page-2](my-diagram.drawio)
+![my-custom-page-name](my-diagram.drawio)
 ```
 
 ## Setup
 
 Install plugin using pip:
 
-```bash
-pip install mkdocs-drawio-file
+```
+pip install mkdocs-drawio
 ```
 
 Add the plugin to your `mkdocs.yml`
 
 ```yaml
 plugins:
-  - drawio_file
+  - drawio
 ```
 
 ### Configuration
@@ -46,4 +45,4 @@ plugins:
 
 ## How it works
 
-After your mkdocs has generated the HTML for your documentation, the plugin adds the necessary diagram.net javascript library. Searches for `img` tags with a file ending of `*.drawio` and replaces them with the appropiate `mxgraph` html block. For further details, please look at the [official diagrams.net documentation](https://www.diagrams.net/doc/faq/embed-html).
+After mkdocs has generated the html for your documentation, this plugin adds the necessary drawio javascript library. Searches for `img` tags with a file ending of `*.drawio` and replaces them with the appropiate `mxgraph` html block. For further details, please have a look at the [official drawio.com documentation](https://www.drawio.com/doc/faq/embed-html).

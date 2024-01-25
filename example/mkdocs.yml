@@ -1,6 +1,11 @@
 site_name: test_mkdocs_drawio
 docs_dir: docs
 
+nav:
+  - Test1: 'test1/index.md'
+  - Test2: 'test2/index.md'
+  - Test3: 'test3/index.md'
+
 plugins:
     - search
     - drawio
