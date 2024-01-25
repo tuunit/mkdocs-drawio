@@ -8,19 +8,23 @@ def read(name):
 
 
 setup(
+<<<<<<< HEAD
     name="mkdocs-drawio-file",
+=======
+    name="mkdocs-drawio",
+>>>>>>> 598c5cb (cleanup after fork)
     version="1.5.3",
     packages=find_packages(),
-    url="https://github.com/onixpro/mkdocs-drawio-file",
+    url="https://github.com/tuunit/mkdocs-drawio",
     license="MIT",
-    author="Sergey Lukin",
-    author_email="onixpro@gmail.com",
-    description="MkDocs plugin to embed drawio files",
+    author="Sergey Lukin, Jan Larwig",
+    author_email="onixpro@gmail.com, jan@larwig.com",
+    description="MkDocs plugin for embedding Drawio files",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     install_requires=["mkdocs", "beautifulsoup4", "lxml"],
     entry_points={"mkdocs.plugins": [
-        "drawio_file = mkdocs_drawio_file:DrawioFilePlugin",]},
+        "drawio = mkdocs_drawio:DrawioPlugin",]},
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "License :: OSI Approved :: MIT License",

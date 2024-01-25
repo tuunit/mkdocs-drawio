@@ -19,9 +19,9 @@ SUB_TEMPLATE = string.Template(
 # ------------------------
 # Plugin
 # ------------------------
-class DrawioFilePlugin(BasePlugin):
+class DrawioPlugin(BasePlugin):
     """
-    Plugin for embedding DrawIO Diagrams into your Docs
+    Plugin for embedding Drawio Diagrams into your MkDocs
     """
 
     config_scheme = (
