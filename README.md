@@ -39,7 +39,7 @@ To use a custom source for the drawio viewer JavaScript file you can overwritte 
 
 ```yaml
 plugins:
-  - drawio_file:
+  - drawio:
       viewer_js: "https://viewer.diagrams.net/js/viewer-static.min.js"
 ```
 

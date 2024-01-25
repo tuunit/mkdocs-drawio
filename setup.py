@@ -8,12 +8,8 @@ def read(name):
 
 
 setup(
-<<<<<<< HEAD
-    name="mkdocs-drawio-file",
-=======
     name="mkdocs-drawio",
->>>>>>> 598c5cb (cleanup after fork)
-    version="1.5.3",
+    version="1.5.4",
     packages=find_packages(),
     url="https://github.com/tuunit/mkdocs-drawio",
     license="MIT",

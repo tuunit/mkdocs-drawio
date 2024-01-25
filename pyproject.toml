@@ -1,18 +1,11 @@
 [tool.poetry]
-<<<<<<< HEAD
-name = "mkdocs-drawio-file"
-version = "1.5.3"
-description = "Mkdocs plugin that renders .drawio files"
-authors = ["Sergey Lukin <onixpro@gmail.com>"]
-=======
 name = "mkdocs-drawio"
-version = "1.5.3"
+version = "1.5.4"
 description = "MkDocs plugin for embedding Drawio files"
 authors = [
     "Sergey Lukin <onixpro@gmail.com>",
     "Jan Larwig <jan@larwig.com>"
 ]
->>>>>>> 598c5cb (cleanup after fork)
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/tuunit/mkdocs-drawio/"

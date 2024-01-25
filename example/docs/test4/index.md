@@ -1,3 +1,3 @@
 # Test of separate assets directory
 
-![](../media/test.drawio)
+![](../assets/test.drawio)

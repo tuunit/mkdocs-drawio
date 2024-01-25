@@ -1,11 +1,10 @@
-import logging
 import re
-import string
-from pathlib import Path
-
 import mkdocs
-from bs4 import BeautifulSoup
+import string
+import logging
 from lxml import etree
+from pathlib import Path
+from bs4 import BeautifulSoup
 from mkdocs.plugins import BasePlugin
 
 # ------------------------
@@ -28,7 +27,7 @@ class DrawioPlugin(BasePlugin):
         (
             "file_extension",
             mkdocs.config.config_options.Type(str, default=".drawio"),
-        ),        
+        ),
         (
             "viewer_js",
             mkdocs.config.config_options.Type(
@@ -54,9 +53,7 @@ class DrawioPlugin(BasePlugin):
             return output_content
 
         # add drawio library to body
-        lib = soup.new_tag(
-            "script", src=self.config["viewer_js"]
-        )
+        lib = soup.new_tag("script", src=self.config["viewer_js"])
         soup.body.append(lib)
 
         # substitute images with embedded drawio diagram
@@ -73,10 +70,7 @@ class DrawioPlugin(BasePlugin):
         return str(soup)
 
     def substitute_image(self, path: Path, src: str, alt: str):
-        if src.startswith("../"):
-            src = src[3:]
-
-        diagram_xml = etree.parse(path / src)
+        diagram_xml = etree.parse(path.joinpath(src))
         diagram = self.parse_diagram(diagram_xml, alt)
         escaped_xml = self.escape_diagram(diagram)
 
