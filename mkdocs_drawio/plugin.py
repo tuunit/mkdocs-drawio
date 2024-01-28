@@ -25,10 +25,6 @@ class DrawioPlugin(BasePlugin):
 
     config_scheme = (
         (
-            "file_extension",
-            mkdocs.config.config_options.Type(str, default=".drawio"),
-        ),
-        (
             "viewer_js",
             mkdocs.config.config_options.Type(
                 str, default="https://viewer.diagrams.net/js/viewer-static.min.js"
