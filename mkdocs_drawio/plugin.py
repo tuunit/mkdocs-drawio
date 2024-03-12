@@ -65,14 +65,16 @@ class DrawioPlugin(BasePlugin):
 
         return str(soup)
 
-    def substitute_image(self, path: Path, src: str, alt: str):
+    @staticmethod
+    def substitute_image(path: Path, src: str, alt: str):
         diagram_xml = etree.parse(path.joinpath(src).resolve())
         diagram = self.parse_diagram(diagram_xml, alt)
         escaped_xml = self.escape_diagram(diagram)
 
         return SUB_TEMPLATE.substitute(xml_drawio=escaped_xml)
 
-    def parse_diagram(self, data, alt):
+    @staticmethod
+    def parse_diagram(data, alt):
         if alt is None:
             return etree.tostring(data, encoding=str)
 
@@ -95,7 +97,8 @@ class DrawioPlugin(BasePlugin):
 
         return etree.tostring(mxfile, encoding=str)
 
-    def escape_diagram(self, str_xml: str):
+    @staticmethod
+    def escape_diagram(str_xml: str):
         str_xml = str_xml.replace("&", "&amp;")
         str_xml = str_xml.replace("<", "&lt;")
         str_xml = str_xml.replace(">", "&gt;")
