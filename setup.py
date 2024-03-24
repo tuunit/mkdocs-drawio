@@ -9,7 +9,7 @@ def read(name):
 
 setup(
     name="mkdocs-drawio",
-    version="1.5.5",
+    version="1.6.0",
     packages=find_packages(),
     url="https://github.com/tuunit/mkdocs-drawio",
     license="MIT",

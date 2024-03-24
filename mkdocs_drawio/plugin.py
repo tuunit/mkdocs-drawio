@@ -37,9 +37,14 @@ class DrawioPlugin(BasePlugin):
         self.pool = None
 
     def on_post_page(self, output_content, config, page, **kwargs):
+        return self.render_drawio_diagrams(output_content, page)
+
+    def render_drawio_diagrams(self, output_content, page):
         if ".drawio" not in output_content.lower():
             # Skip unecessary HTML parsing
             return output_content
+
+        plugin_config = self.config.copy()
 
         soup = BeautifulSoup(output_content, "html.parser")
 
@@ -49,7 +54,7 @@ class DrawioPlugin(BasePlugin):
             return output_content
 
         # add drawio library to body
-        lib = soup.new_tag("script", src=self.config["viewer_js"])
+        lib = soup.new_tag("script", src=plugin_config["viewer_js"])
         soup.body.append(lib)
 
         # substitute images with embedded drawio diagram
@@ -58,7 +63,7 @@ class DrawioPlugin(BasePlugin):
         for diagram in diagrams:
             diagram.replace_with(
                 BeautifulSoup(
-                    self.substitute_image(path, diagram["src"], diagram["alt"]),
+                    DrawioPlugin.substitute_image(path, diagram["src"], diagram["alt"]),
                     "html.parser",
                 )
             )
@@ -68,8 +73,8 @@ class DrawioPlugin(BasePlugin):
     @staticmethod
     def substitute_image(path: Path, src: str, alt: str):
         diagram_xml = etree.parse(path.joinpath(src).resolve())
-        diagram = self.parse_diagram(diagram_xml, alt)
-        escaped_xml = self.escape_diagram(diagram)
+        diagram = DrawioPlugin.parse_diagram(diagram_xml, alt)
+        escaped_xml = DrawioPlugin.escape_diagram(diagram)
 
         return SUB_TEMPLATE.substitute(xml_drawio=escaped_xml)
 

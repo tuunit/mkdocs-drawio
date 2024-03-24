@@ -11,5 +11,6 @@ nav:
 plugins:
     - search
     - drawio
+    - print-site
     
 repo_url: https://github.com/tuunit/mkdocs-drawio
