@@ -2,11 +2,12 @@
 [![Publish Badge](https://github.com/tuunit/mkdocs-drawio/workflows/Publish/badge.svg)](https://github.com/tuunit/mkdocs-drawio/actions)
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
 
-[Buy Sergey a 🍜](https://www.buymeacoffee.com/SergeyLukin) 
-Sergey (onixpro) is the original creator of this plugin. Repo can be found [here.](https://github.com/onixpro/mkdocs-drawio-file)
+[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin) 
+
+Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin. Repo can be found [here.](https://github.com/onixpro/mkdocs-drawio-file)
 
 ## Features
-This plugin enables you to embed interactive drawio diagrams in your documentation. Simply add your files like you would any other image:
+This plugin enables you to embed interactive drawio diagrams in your documentation. Simply add your diagrams like you would any other image:
 
 ```markdown
 ![](my-diagram.drawio)
@@ -36,7 +37,7 @@ plugins:
 
 ### Configuration
 
-To use a custom source for the drawio viewer JavaScript file you can overwritte the url.
+By default the plugin uses the official url for the minified drawio javascript library. To use a custom source for the drawio viewer you can overwritte the url. This might be useful in airlocked environments.
 
 ```yaml
 plugins:
@@ -46,7 +47,11 @@ plugins:
 
 ## How it works
 
-After mkdocs has generated the html for your documentation, this plugin adds the necessary drawio javascript library. Searches for `img` tags with a file ending of `*.drawio` and replaces them with the appropiate `mxgraph` html block. For further details, please have a look at the [official drawio.com documentation](https://www.drawio.com/doc/faq/embed-html).
+1. mkdocs generates the html per page
+2. `mkdocs-drawio` attaches to the `on_post_page` event. For more details, please have a look at the [event lifecycle documentation](https://www.mkdocs.org/dev-guide/plugins/#events)
+3. Adds the drawio viewer library
+4. Searches through the generated html for all `img` tags that have a source of type `.drawio`
+5. Replaces the found `img` tags with `mxgraph` html blocks (actual drawio diagram content). For more details, please have a look at the [official drawio.com documentation](https://www.drawio.com/doc/faq/embed-html).
 
 
 ## Contribution guide
