@@ -47,3 +47,13 @@ plugins:
 ## How it works
 
 After mkdocs has generated the html for your documentation, this plugin adds the necessary drawio javascript library. Searches for `img` tags with a file ending of `*.drawio` and replaces them with the appropiate `mxgraph` html block. For further details, please have a look at the [official drawio.com documentation](https://www.drawio.com/doc/faq/embed-html).
+
+
+## Contribution guide
+
+1. Either use the devcontainer or setup a venv with mkdocs installed
+2. Install your current local version: `pip install -e .`
+3. Add a test for your changes in the `example` directory
+4. Test your changes by starting `mkdocs serve` in the `example` directory
+5. Increase the version `pyproject.toml` and `setup.py`
+6. Open pull request
