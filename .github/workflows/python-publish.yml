@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       id-token: write
 
     steps:
@@ -25,7 +25,7 @@ jobs:
           python-version: "3.x"
       
       - name: Install pypa/build
-        run: python3 -m pip install build --user
+        run: python3 -m pip install build poetry --user
 
       - name: Build a binary wheel and a source tarball
         run: python3 -m build
@@ -35,6 +35,23 @@ jobs:
         with:
           name: python-package-distributions
           path: dist/
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          tag="v$(poetry version -s)"
+
+          git tag -a "${tag}" -m "Release ${tag}"
+          git push origin "${tag}"
+
+          gh release create "${tag}" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${tag}" \
+              --generate-notes
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
