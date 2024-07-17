@@ -104,10 +104,10 @@ class DrawioPlugin(BasePlugin):
 
     @staticmethod
     def escape_diagram(str_xml: str):
-        str_xml = str_xml.replace("&", "&amp;")
-        str_xml = str_xml.replace("<", "&lt;")
-        str_xml = str_xml.replace(">", "&gt;")
-        str_xml = str_xml.replace('"', "\&quot;")
-        str_xml = str_xml.replace("'", "&apos;")
-        str_xml = str_xml.replace("\n", "")
+        str_xml = str_xml.replace(r"&", r"&amp;")
+        str_xml = str_xml.replace(r"<", r"&lt;")
+        str_xml = str_xml.replace(r">", r"&gt;")
+        str_xml = str_xml.replace(r'"', r"\&quot;")
+        str_xml = str_xml.replace(r"'", r"&apos;")
+        str_xml = str_xml.replace(r"\n", r"")
         return str_xml
