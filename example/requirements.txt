@@ -1,0 +1,3 @@
+mkdocs
+mkdocs-print-site-plugin
+mkdocs-material

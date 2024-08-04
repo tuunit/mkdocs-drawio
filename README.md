@@ -35,7 +35,7 @@ plugins:
   - drawio
 ```
 
-### Configuration
+## Configuration Options
 
 By default the plugin uses the official url for the minified drawio javascript library. To use a custom source for the drawio viewer you can overwritte the url. This might be useful in airlocked environments.
 
@@ -45,6 +45,34 @@ By default the plugin uses the official url for the minified drawio javascript l
 plugins:
   - drawio:
       viewer_js: "https://viewer.diagrams.net/js/viewer-static.min.js"
+```
+
+## Material Integration
+
+If you are using the Material Theme and want to use the [instant-loading](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/?h=instant#instant-loading) feature. You will have to configure the following:
+
+In your `mkdocs.yaml`:
+
+```yaml
+theme:
+  name: material
+  features:
+    - navigation.instant
+
+plugins:
+  - drawio
+
+extra_javascript:
+  - https://viewer.diagrams.net/js/viewer-static.min.js
+  - javascripts/drawio-reload.js
+```
+
+Add `docs/javascripts/drawio-reload.js` to your project:
+
+```js
+document$.subscribe(({ body }) => {
+  GraphViewer.processElements()
+})
 ```
 
 ## How it works
@@ -62,5 +90,5 @@ plugins:
 2. Install your current local version: `pip install -e .`
 3. Add a test for your changes in the `example` directory
 4. Test your changes by starting `mkdocs serve` in the `example` directory
-5. Increase the version `pyproject.toml` and `setup.py`
+5. Increase the version `pyproject.toml`
 6. Open pull request
