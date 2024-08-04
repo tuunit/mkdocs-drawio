@@ -1,0 +1,25 @@
+site_name: test_mkdocs_drawio
+docs_dir: docs
+
+nav:
+  - Test1: 'test1/index.md'
+  - Test2: 'test2/index.md'
+  - Test3: 'test3/index.md'
+  - Test4a: 'test4/index.md'
+  - Test4b: 'test4/example.md'
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+
+extra_javascript:
+  - https://viewer.diagrams.net/js/viewer-static.min.js
+  - javascripts/drawio-reload.js
+
+plugins:
+    - search
+    - drawio
+    - print-site
+
+repo_url: https://github.com/tuunit/mkdocs-drawio
