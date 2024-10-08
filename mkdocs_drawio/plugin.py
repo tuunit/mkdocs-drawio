@@ -1,8 +1,11 @@
 import re
+import json
 import mkdocs
 import string
 import logging
 from lxml import etree
+from typing import Dict
+from html import escape
 from pathlib import Path
 from bs4 import BeautifulSoup
 from mkdocs.plugins import BasePlugin
@@ -11,7 +14,7 @@ from mkdocs.plugins import BasePlugin
 # Constants and utilities
 # ------------------------
 SUB_TEMPLATE = string.Template(
-    '<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;$xml_drawio&quot;}"></div>'
+    '<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="$config"></div>'
 )
 
 LOGGER = logging.getLogger("mkdocs.plugins.diagrams")
@@ -25,12 +28,10 @@ class DrawioPlugin(BasePlugin):
     """
 
     config_scheme = (
-        (
-            "viewer_js",
-            mkdocs.config.config_options.Type(
-                str, default="https://viewer.diagrams.net/js/viewer-static.min.js"
-            ),
-        ),
+        ("viewer_js",mkdocs.config.config_options.Type(str, default="https://viewer.diagrams.net/js/viewer-static.min.js")),
+        ("toolbar",mkdocs.config.config_options.Type(bool, default=True)),
+        ("tooltips",mkdocs.config.config_options.Type(bool, default=True)),
+        ("border",mkdocs.config.config_options.Type(int, default=0)),
     )
 
     def on_post_page(self, output_content, config, page, **kwargs):
@@ -38,12 +39,19 @@ class DrawioPlugin(BasePlugin):
 
     def render_drawio_diagrams(self, output_content, page):
         if ".drawio" not in output_content.lower():
-            # Skip unecessary HTML parsing
             return output_content
 
         plugin_config = self.config.copy()
 
         soup = BeautifulSoup(output_content, "html.parser")
+
+        diagram_config = {
+            "toolbar": "zoom" if plugin_config["toolbar"] else None,
+            "tooltips": "1" if plugin_config["tooltips"] else "0",
+            "border": plugin_config["border"] + 5,
+            "resize": "1",
+            "edit": "_blank",
+        }
 
         # search for images using drawio extension
         diagrams = soup.findAll("img", src=re.compile(r".*\.drawio$", re.IGNORECASE))
@@ -57,31 +65,44 @@ class DrawioPlugin(BasePlugin):
         # substitute images with embedded drawio diagram
         path = Path(page.file.abs_dest_path).parent
 
+        
         for diagram in diagrams:
-            diagram.replace_with(
-                BeautifulSoup(
-                    DrawioPlugin.substitute_image(path, diagram["src"], diagram["alt"]),
+            if re.search("^https?://", diagram["src"]):
+                mxgraph = BeautifulSoup(
+                    DrawioPlugin.substitute_with_url(diagram_config, diagram["src"]),
                     "html.parser",
                 )
-            )
+            else:
+                mxgraph = BeautifulSoup(
+                    DrawioPlugin.substitute_with_file(diagram_config, path, diagram["src"], diagram["alt"]),
+                    "html.parser",
+                )
+                
+            diagram.replace_with(mxgraph)
 
         return str(soup)
 
     @staticmethod
-    def substitute_image(path: Path, src: str, alt: str):
+    def substitute_with_url(config: Dict, url: str) -> str:
+        config["url"] = url
+
+        return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
+
+    @staticmethod
+    def substitute_with_file(config: Dict, path: Path, src: str, alt: str) -> str:
         try:
             diagram_xml = etree.parse(path.joinpath(src).resolve())
         except Exception:
             LOGGER.error(f"Error: Provided diagram file '{src}' on path '{path}' is not a valid diagram")
             diagram_xml = etree.fromstring('<invalid/>')
 
-        diagram = DrawioPlugin.parse_diagram(diagram_xml, alt, src, path)
-        escaped_xml = DrawioPlugin.escape_diagram(diagram)
+        diagram = DrawioPlugin.parse_diagram(diagram_xml, alt)
+        config["xml"]=diagram
 
-        return SUB_TEMPLATE.substitute(xml_drawio=escaped_xml)
+        return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
 
     @staticmethod
-    def parse_diagram(data, alt, src="", path=None):
+    def parse_diagram(data, alt, src="", path=None) -> str:
         if alt is None or len(alt) == 0:
             return etree.tostring(data, encoding=str)
 
@@ -104,13 +125,3 @@ class DrawioPlugin(BasePlugin):
         except Exception:
             LOGGER.error(f"Error: Could not properly parse page name '{alt}' for diagram '{src}' on path '{path}'")
         return ""
-
-    @staticmethod
-    def escape_diagram(str_xml: str):
-        str_xml = str_xml.replace("&", r"&amp;")
-        str_xml = str_xml.replace("<", r"&lt;")
-        str_xml = str_xml.replace(">", r"&gt;")
-        str_xml = str_xml.replace('"', r"\&quot;")
-        str_xml = str_xml.replace("'", r"&apos;")
-        str_xml = str_xml.replace("\n", r"")
-        return str_xml

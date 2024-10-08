@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "mkdocs-drawio"
-version = "1.6.5"
+version = "1.7.0"
 description = "MkDocs plugin for embedding Drawio files"
 authors = [
-    "Sergey Lukin <onixpro@gmail.com>",
-    "Jan Larwig <jan@larwig.com>"
+    "Jan Larwig <jan@larwig.com>",
+    "Sergey Lukin <onixpro@gmail.com>"
 ]
 license = "MIT"
 readme = "README.md"
