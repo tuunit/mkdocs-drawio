@@ -6,14 +6,19 @@ nav:
   - Tests:
     - Simple Diagram: 'tests/simple-diagram/index.md'
     - Error Handling: 'tests/error-handling/index.md'
+    - Configuration: 'tests/configuration/index.md'
     - Code Blocks: 'tests/code-blocks/index.md'
     - Relative Paths (a): 'tests/relative-paths/index.md'
     - Relative Paths (b): 'tests/relative-paths/example.md'
     - Pagging: 'tests/pagging/index.md'
+    - External URL: 'tests/external-url/index.md'
 
 plugins:
     - search
-    - drawio
+    - drawio:
+        toolbar: true
+        tooltips: true
+        border: 20
     - print-site
     
 repo_url: https://github.com/tuunit/mkdocs-drawio

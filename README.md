@@ -10,7 +10,20 @@ Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this p
 This plugin enables you to embed interactive drawio diagrams in your documentation. Simply add your diagrams like you would any other image:
 
 ```markdown
+You can either use diagrams hosted within your own docs. Absolute as well as relative paths are allowed:
+
+Absolute path:
+![](/assets/my-diagram.drawio)
+
+Same directory as the markdown file:
 ![](my-diagram.drawio)
+
+Relative directory to the markdown file:
+![](../my-diagram.drawio)
+
+
+Or you can use external urls:
+![](https://example.com/diagram.drawio)
 ```
 
 Additionally this plugin supports multi page diagrams by using the `alt` text to select the pages by name:
@@ -45,6 +58,16 @@ By default the plugin uses the official url for the minified drawio javascript l
 plugins:
   - drawio:
       viewer_js: "https://viewer.diagrams.net/js/viewer-static.min.js"
+```
+
+Further options are:
+
+```yaml
+plugins:
+  - drawio:
+      toolbar: true  # control if hovering on a diagram shows a toolbar for zooming or not (default: true)
+      tooltips: true # control if tooltips will be shown (default: true)
+      border: 10     # increase or decrease the border / margin around your diagrams (default: 5) 
 ```
 
 ## Material Integration
