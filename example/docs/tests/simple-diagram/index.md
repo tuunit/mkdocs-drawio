@@ -1,0 +1,3 @@
+# Simple diagram
+
+![](test.drawio)

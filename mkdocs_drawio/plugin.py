@@ -14,6 +14,7 @@ SUB_TEMPLATE = string.Template(
     '<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers tags lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;$xml_drawio&quot;}"></div>'
 )
 
+LOGGER = logging.getLogger("mkdocs.plugins.diagrams")
 
 # ------------------------
 # Plugin
@@ -31,10 +32,6 @@ class DrawioPlugin(BasePlugin):
             ),
         ),
     )
-
-    def __init__(self):
-        self.log = logging.getLogger("mkdocs.plugins.diagrams")
-        self.pool = None
 
     def on_post_page(self, output_content, config, page, **kwargs):
         return self.render_drawio_diagrams(output_content, page)
@@ -72,20 +69,25 @@ class DrawioPlugin(BasePlugin):
 
     @staticmethod
     def substitute_image(path: Path, src: str, alt: str):
-        diagram_xml = etree.parse(path.joinpath(src).resolve())
-        diagram = DrawioPlugin.parse_diagram(diagram_xml, alt)
+        try:
+            diagram_xml = etree.parse(path.joinpath(src).resolve())
+        except Exception:
+            LOGGER.error(f"Error: Provided diagram file '{src}' on path '{path}' is not a valid diagram")
+            diagram_xml = etree.fromstring('<invalid/>')
+
+        diagram = DrawioPlugin.parse_diagram(diagram_xml, alt, src, path)
         escaped_xml = DrawioPlugin.escape_diagram(diagram)
 
         return SUB_TEMPLATE.substitute(xml_drawio=escaped_xml)
 
     @staticmethod
-    def parse_diagram(data, alt):
-        if alt is None:
+    def parse_diagram(data, alt, src="", path=None):
+        if alt is None or len(alt) == 0:
             return etree.tostring(data, encoding=str)
 
-        mxfile = data.xpath("//mxfile")[0]
-
         try:
+            mxfile = data.xpath("//mxfile")[0]
+
             # try to parse for a specific page by using the alt attribute
             page = mxfile.xpath(f"//diagram[@name='{alt}']")
 
@@ -96,11 +98,12 @@ class DrawioPlugin(BasePlugin):
                 result.append(page[0])
                 return etree.tostring(result, encoding=str)
             else:
-                print(f"Warning: Found {len(page)} results for page name '{alt}'")
-        except Exception:
-            print(f"Error: Could not properly parse page name: '{alt}'")
+                LOGGER.warning(f"Warning: Found {len(page)} results for page name '{alt}' for diagram '{src}' on path '{path}'")
 
-        return etree.tostring(mxfile, encoding=str)
+            return etree.tostring(mxfile, encoding=str)
+        except Exception:
+            LOGGER.error(f"Error: Could not properly parse page name '{alt}' for diagram '{src}' on path '{path}'")
+        return ""
 
     @staticmethod
     def escape_diagram(str_xml: str):

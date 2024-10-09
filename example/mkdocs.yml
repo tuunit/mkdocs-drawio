@@ -2,11 +2,14 @@ site_name: test_mkdocs_drawio
 docs_dir: docs
 
 nav:
-  - Test1: 'test1/index.md'
-  - Test2: 'test2/index.md'
-  - Test3: 'test3/index.md'
-  - Test4a: 'test4/index.md'
-  - Test4b: 'test4/example.md'
+  - Home: index.md
+  - Tests:
+    - Simple Diagram: 'tests/simple-diagram/index.md'
+    - Error Handling: 'tests/error-handling/index.md'
+    - Code Blocks: 'tests/code-blocks/index.md'
+    - Relative Paths (a): 'tests/relative-paths/index.md'
+    - Relative Paths (b): 'tests/relative-paths/example.md'
+    - Pagging: 'tests/pagging/index.md'
 
 plugins:
     - search
