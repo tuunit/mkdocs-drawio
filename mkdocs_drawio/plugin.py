@@ -32,6 +32,7 @@ class DrawioPlugin(BasePlugin):
         ("toolbar",mkdocs.config.config_options.Type(bool, default=True)),
         ("tooltips",mkdocs.config.config_options.Type(bool, default=True)),
         ("border",mkdocs.config.config_options.Type(int, default=0)),
+        ("edit", mkdocs.config.config_options.Type(bool, default=True)),
     )
 
     def on_post_page(self, output_content, config, page, **kwargs):
@@ -50,7 +51,7 @@ class DrawioPlugin(BasePlugin):
             "tooltips": "1" if plugin_config["tooltips"] else "0",
             "border": plugin_config["border"] + 5,
             "resize": "1",
-            "edit": "_blank",
+            "edit": "_blank" if plugin_config["edit"] else None,
         }
 
         # search for images using drawio extension

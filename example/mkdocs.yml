@@ -18,6 +18,7 @@ plugins:
     - drawio:
         toolbar: true
         tooltips: true
+        edit: true
         border: 20
     - print-site
     
