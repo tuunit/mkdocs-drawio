@@ -67,6 +67,7 @@ plugins:
   - drawio:
       toolbar: true  # control if hovering on a diagram shows a toolbar for zooming or not (default: true)
       tooltips: true # control if tooltips will be shown (default: true)
+      edit: true     # control if edit button will be shown in the lightbox view (default: true)
       border: 10     # increase or decrease the border / margin around your diagrams (default: 5) 
 ```
 

@@ -18,8 +18,8 @@ plugins:
     - drawio:
         toolbar: true
         tooltips: true
-        border: 20
         edit: true
+        border: 20
     - print-site
     
 repo_url: https://github.com/tuunit/mkdocs-drawio
