@@ -21,5 +21,8 @@ plugins:
         edit: true
         border: 20
     - print-site
-    
+
+markdown_extensions:
+  - attr_list
+
 repo_url: https://github.com/tuunit/mkdocs-drawio
