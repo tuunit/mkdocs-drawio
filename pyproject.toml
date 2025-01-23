@@ -24,16 +24,16 @@ packages = [
 "Tracker" = "https://github.com/tuunit/mkdocs-drawio/issues"
 
 [tool.poetry.dependencies]
-python = ">=3.8.0,<4.0"
+python = ">=3.8,<4.0"
 beautifulsoup4 = ">=4.0"
 lxml = ">=4.0"
 mkdocs = ">=1.3"
 
 [tool.poetry.group.dev.dependencies]
-poetry = "^2.0"
-python = ">=3.9.0,<4.0"
-black = ">=24.0"
-ruff = "^0.9.2"
+python = ">=3.9,<4.0"
+poetry = { version = "^2.0", python = ">=3.9" }  # Marqueur d'environnement
+black = { version = ">=24.0", python = ">=3.9" } # Pareil pour black
+ruff = { version = "^0.9.2", python = ">=3.9" }
 mkdocs-print-site-plugin = "^2.6.0"
 mkdocs-material = "^9.5.50"
 mkdocs-glightbox = "^0.4.0"
