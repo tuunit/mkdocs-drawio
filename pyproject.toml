@@ -5,7 +5,7 @@ description = "MkDocs plugin for embedding Drawio files"
 authors = [
     "Jan Larwig <jan@larwig.com>",
     "Sergey Lukin <onixpro@gmail.com>",
-    "Yves Chevallier <yves.chevallier@heig-vd.ch"
+    "Yves Chevallier <yves.chevallier@heig-vd.ch>"
 ]
 license = "MIT"
 readme = "README.md"
