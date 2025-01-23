@@ -17,9 +17,17 @@ theme:
   name: material
   features:
     - navigation.instant
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
 
 extra_javascript:
-  - https://viewer.diagrams.net/js/viewer-static.min.js
   - javascripts/drawio-reload.js
 
 plugins:

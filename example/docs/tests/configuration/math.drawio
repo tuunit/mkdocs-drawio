@@ -1,11 +1,20 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.7">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
   <diagram id="sWgCjdYztQFh1ezxrF-R" name="Page-1">
-    <mxGraphModel dx="963" dy="1401" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+    <mxGraphModel dx="1420" dy="942" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="cVhbZjsc7NjAtHNjXZGz-10" value="&lt;span style=&quot;color: rgb(232, 62, 140); font-family: SFMono-Regular, Menlo, Monaco, Consolas, &amp;quot;Liberation Mono&amp;quot;, &amp;quot;Courier New&amp;quot;, monospace; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;LaTeX \(\sqrt{3×-1}+(1+x)^2\) and AsciiMath `a^b + b^2 = c^2`&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="110" y="100" width="210" height="50" as="geometry" />
+        <mxCell id="DrGJ5b35OeQaOMWxvQv0-1" value="LaTeX" style="swimlane;whiteSpace=wrap;html=1;fillColor=none;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="200" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="DrGJ5b35OeQaOMWxvQv0-2" value="&lt;span style=&quot;font-family: SFMono-Regular, Menlo, Monaco, Consolas, &amp;quot;Liberation Mono&amp;quot;, &amp;quot;Courier New&amp;quot;, monospace; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;\(x_{1,2} = -b \pm \frac{\sqrt{b^2 - 4\cdot ac}}{2a}\)&lt;br&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=none;strokeColor=none;fontColor=default;fontSize=15;align=center;" vertex="1" parent="DrGJ5b35OeQaOMWxvQv0-1">
+          <mxGeometry x="10" y="40" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DrGJ5b35OeQaOMWxvQv0-3" value="AsciiMath" style="swimlane;whiteSpace=wrap;html=1;fillColor=none;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="390" y="200" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="DrGJ5b35OeQaOMWxvQv0-4" value="&lt;span style=&quot;font-family: SFMono-Regular, Menlo, Monaco, Consolas, &amp;quot;Liberation Mono&amp;quot;, &amp;quot;Courier New&amp;quot;, monospace; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;`a^b + b^2 = c^2`&lt;/span&gt;&lt;br&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=none;strokeColor=none;fontColor=default;fontSize=15;align=center;" vertex="1" parent="DrGJ5b35OeQaOMWxvQv0-3">
+          <mxGeometry x="10" y="40" width="230" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
