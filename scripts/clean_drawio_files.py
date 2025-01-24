@@ -1,6 +1,7 @@
 import os
 import xml.etree.ElementTree as ET
 
+
 def clean_drawio_files(directory="."):
     """
     Look for all .drawio files in the given directory and its subdirectories and
@@ -22,12 +23,15 @@ def clean_drawio_files(directory="."):
                                 changed = True
 
                         if changed:
-                            tree.write(file_path, encoding="utf-8", xml_declaration=True)
+                            tree.write(
+                                file_path, encoding="utf-8", xml_declaration=True
+                            )
                             print(f"Nettoyé : {file_path}")
                         else:
                             print(f"Aucun changement : {file_path}")
                 except Exception as e:
                     print(f"Erreur lors du traitement de {file_path} : {e}")
+
 
 if __name__ == "__main__":
     clean_drawio_files()
