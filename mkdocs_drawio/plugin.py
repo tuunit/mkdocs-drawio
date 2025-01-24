@@ -1,3 +1,5 @@
+""" MkDocs Drawio Plugin """
+
 import re
 import json
 import string
@@ -110,6 +112,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
             if x.lower() in ["false", "0", "no"]:
                 return False
             LOGGER.warning(f'Could not parse boolean value "{x}"')
+            return False
 
         def to_int_or_str(x):
             try:
@@ -207,7 +210,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                 )
             else:
                 diagram_page = (
-                    diagram["alt"] if self.config.alt_as_page else diagram["page"]
+                    diagram["alt"] if self.config.alt_as_page else diagram.get("page")
                 )
                 mxgraph = BeautifulSoup(
                     self.substitute_with_file(
