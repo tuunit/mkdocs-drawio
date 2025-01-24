@@ -1,0 +1,56 @@
+site_name: MkDocs Drawio Plugin
+docs_dir: docs
+
+nav:
+  - Documentation:
+    - Getting Started: index.md
+    - Configuration: configuration.md
+    - Plumbing: plumbing.md
+  - Examples:
+    - 'tests/simple-diagram/index.md'
+    - 'tests/error-handling/index.md'
+    - 'tests/configuration/index.md'
+    - Code Blocks: 'tests/code-blocks/index.md'
+    - Relative Paths (a): 'tests/relative-paths/index.md'
+    - Relative Paths (b): 'tests/relative-paths/example.md'
+    - Pagging: 'tests/pagging/index.md'
+    - External URL: 'tests/external-url/index.md'
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+
+extra_javascript:
+  - javascripts/drawio-reload.js
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+    - search
+    - drawio:
+        toolbar:
+          pages: false
+          zoom: false
+          layers: false
+          lightbox: false
+          nohide: true
+        tooltips: false
+        edit: false
+        alt_as_page: true
+    - print-site
+
+repo_url: https://github.com/tuunit/mkdocs-drawio

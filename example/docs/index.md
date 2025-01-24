@@ -1,1 +1,0 @@
-# MkDocs Drawio Plugin Tests

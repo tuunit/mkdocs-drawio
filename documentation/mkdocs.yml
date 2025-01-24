@@ -14,19 +14,19 @@ nav:
     - External URL: 'tests/external-url/index.md'
 
 theme:
-  name: material
-  features:
-    - navigation.instant
-
-extra_javascript:
-  - https://viewer.diagrams.net/js/viewer-static.min.js
-  - javascripts/drawio-reload.js
+    name: mkdocs
+    user_color_mode_toggle: true
 
 plugins:
     - search
     - drawio:
+        toolbar: true
         tooltips: true
+        edit: true
         border: 20
     - print-site
+
+markdown_extensions:
+  - attr_list
 
 repo_url: https://github.com/tuunit/mkdocs-drawio
