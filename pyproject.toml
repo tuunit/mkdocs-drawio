@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mkdocs-drawio"
-version = "1.8.0"
+version = "1.8.1"
 description = "MkDocs plugin for embedding Drawio files"
 authors = [
     "Jan Larwig <jan@larwig.com>",
