@@ -19,6 +19,7 @@ SUB_TEMPLATE = string.Template(
 
 LOGGER = logging.getLogger("mkdocs.plugins.diagrams")
 
+
 # ------------------------
 # Plugin
 # ------------------------
@@ -28,10 +29,15 @@ class DrawioPlugin(BasePlugin):
     """
 
     config_scheme = (
-        ("viewer_js",mkdocs.config.config_options.Type(str, default="https://viewer.diagrams.net/js/viewer-static.min.js")),
-        ("toolbar",mkdocs.config.config_options.Type(bool, default=True)),
-        ("tooltips",mkdocs.config.config_options.Type(bool, default=True)),
-        ("border",mkdocs.config.config_options.Type(int, default=0)),
+        (
+            "viewer_js",
+            mkdocs.config.config_options.Type(
+                str, default="https://viewer.diagrams.net/js/viewer-static.min.js"
+            ),
+        ),
+        ("toolbar", mkdocs.config.config_options.Type(bool, default=True)),
+        ("tooltips", mkdocs.config.config_options.Type(bool, default=True)),
+        ("border", mkdocs.config.config_options.Type(int, default=0)),
         ("edit", mkdocs.config.config_options.Type(bool, default=True)),
     )
 
@@ -66,7 +72,6 @@ class DrawioPlugin(BasePlugin):
         # substitute images with embedded drawio diagram
         path = Path(page.file.abs_dest_path).parent
 
-        
         for diagram in diagrams:
             if re.search("^https?://", diagram["src"]):
                 mxgraph = BeautifulSoup(
@@ -75,10 +80,12 @@ class DrawioPlugin(BasePlugin):
                 )
             else:
                 mxgraph = BeautifulSoup(
-                    DrawioPlugin.substitute_with_file(diagram_config, path, diagram["src"], diagram["alt"]),
+                    DrawioPlugin.substitute_with_file(
+                        diagram_config, path, diagram["src"], diagram["alt"]
+                    ),
                     "html.parser",
                 )
-                
+
             diagram.replace_with(mxgraph)
 
         return str(soup)
@@ -94,11 +101,13 @@ class DrawioPlugin(BasePlugin):
         try:
             diagram_xml = etree.parse(path.joinpath(src).resolve())
         except Exception:
-            LOGGER.error(f"Error: Provided diagram file '{src}' on path '{path}' is not a valid diagram")
-            diagram_xml = etree.fromstring('<invalid/>')
+            LOGGER.error(
+                f"Error: Provided diagram file '{src}' on path '{path}' is not a valid diagram"
+            )
+            diagram_xml = etree.fromstring("<invalid/>")
 
         diagram = DrawioPlugin.parse_diagram(diagram_xml, alt)
-        config["xml"]=diagram
+        config["xml"] = diagram
 
         return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
 
@@ -120,9 +129,13 @@ class DrawioPlugin(BasePlugin):
                 result.append(page[0])
                 return etree.tostring(result, encoding=str)
             else:
-                LOGGER.warning(f"Warning: Found {len(page)} results for page name '{alt}' for diagram '{src}' on path '{path}'")
+                LOGGER.warning(
+                    f"Warning: Found {len(page)} results for page name '{alt}' for diagram '{src}' on path '{path}'"
+                )
 
             return etree.tostring(mxfile, encoding=str)
         except Exception:
-            LOGGER.error(f"Error: Could not properly parse page name '{alt}' for diagram '{src}' on path '{path}'")
+            LOGGER.error(
+                f"Error: Could not properly parse page name '{alt}' for diagram '{src}' on path '{path}'"
+            )
         return ""

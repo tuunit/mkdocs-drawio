@@ -110,9 +110,12 @@ document$.subscribe(({ body }) => {
 
 ## Contribution guide
 
-1. Either use the devcontainer or setup a venv with mkdocs installed
-2. Install your current local version: `pip install -e .`
-3. Add a test for your changes in the `example` directory
-4. Test your changes by starting `mkdocs serve` in the `example` directory
-5. Increase the version `pyproject.toml`
-6. Open pull request
+1. Setup a virtual environment: `python3 -m venv venv && source venv/bin/activate`
+2. Install poetry: `pip install poetry`
+3. Install dependencies and current version: `poetry install`
+4. Make your desired changes
+5. Add a test for your changes in the `example` directory
+6. Test your changes by starting `mkdocs serve` in the `example` directory
+7. Increase the version in `pyproject.toml`
+8. Make sure `poetry run ruff check .` and `poetry run black --check .` passing
+9. Open your pull request ✨️
