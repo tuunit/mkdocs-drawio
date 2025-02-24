@@ -36,3 +36,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.plugins."mkdocs.plugins"]
 drawio = 'mkdocs_drawio.plugin:DrawioPlugin'
+
+[tool.setuptools.packages.find]
+include = ["mkdocs_drawio*"]
+exclude = ["example*"]
