@@ -1,3 +1,12 @@
-# Test to use url instead of file path
+# External URL
 
-![](http://127.0.0.1:8000/tests/assets/test.drawio)
+## Example
+This is an example of an external URL taken from jgraph:
+
+![](https://raw.githubusercontent.com/jgraph/drawio-diagrams/dev/examples/gemfile-dependency-graph.drawio)
+
+## Markdown
+
+```markdown
+![](https://raw.githubusercontent.com/jgraph/drawio-diagrams/dev/examples/gemfile-dependency-graph.drawio)
+```
