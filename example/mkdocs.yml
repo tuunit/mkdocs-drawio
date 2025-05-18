@@ -1,25 +1,51 @@
-site_name: test_mkdocs_drawio
+site_name: MkDocs Drawio Plugin
 docs_dir: docs
 
 nav:
-  - Home: index.md
-  - Tests:
-    - Simple Diagram: 'tests/simple-diagram/index.md'
-    - Error Handling: 'tests/error-handling/index.md'
-    - Configuration: 'tests/configuration/index.md'
-    - Code Blocks: 'tests/code-blocks/index.md'
-    - Relative Paths (a): 'tests/relative-paths/index.md'
-    - Relative Paths (b): 'tests/relative-paths/example.md'
-    - Pagging: 'tests/pagging/index.md'
-    - External URL: 'tests/external-url/index.md'
+  - Documentation:
+      - Getting Started: index.md
+      - Configuration: configuration.md
+      - Plumbing: plumbing.md
+  - Examples:
+      - Simple Diagram: "tests/simple-diagram/index.md"
+      - Error Handling: "tests/error-handling/index.md"
+      - Configuration: "tests/configuration/index.md"
+      - Code Blocks: "tests/code-blocks/index.md"
+      - Relative Paths (Index): "tests/relative-paths/index.md"
+      - Relative Paths (Subpage): "tests/relative-paths/example.md"
+      - Pagging: "tests/pagging/index.md"
+      - External URL: "tests/external-url/index.md"
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+
+extra_javascript:
+  - javascripts/drawio-reload.js
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
 
 plugins:
-    - search
-    - drawio:
-        toolbar: true
-        tooltips: true
-        edit: true
-        border: 20
-    - print-site
-    
+  - search
+  - drawio:
+      toolbar: true
+      tooltips: true
+      edit: true
+      border: 20
+  - print-site
+
 repo_url: https://github.com/tuunit/mkdocs-drawio
