@@ -9,7 +9,7 @@ Below you should see diagram Page-2:
 ![Page-2](test.drawio)
 
 Below you should see Page-1 (default) because the specified Page-3 has not been found:
-![test diagram](test.drawio)
+![Page-3](test.drawio)
 
 Furthoremore, you should see a warning in your mkdocs server similar to:
 
