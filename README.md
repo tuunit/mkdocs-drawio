@@ -1,4 +1,5 @@
 # MkDocs Plugin for embedding Drawio files
+
 [![Publish Badge](https://github.com/tuunit/mkdocs-drawio/workflows/Publish/badge.svg)](https://github.com/tuunit/mkdocs-drawio/actions)
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
 
@@ -6,6 +7,7 @@ Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this p
 [Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin) 
 
 ## Features
+
 This plugin enables you to embed interactive drawio diagrams in your documentation. Simply add your diagrams like you would any other image:
 
 ```markdown
@@ -25,18 +27,23 @@ Or you can use external urls:
 ![](https://example.com/diagram.drawio)
 ```
 
-Additionally this plugin supports multi page diagrams by using the `alt` text to select the pages by name:
+Additionally this plugin supports multi page diagrams by using either the `page` or `alt` property. To use the `page` property, you need to use the markdown extension `attr_list`.
 
 ```markdown
+Either use the alt text:
 ![Page-2](my-diagram.drawio)
 ![my-custom-page-name](my-diagram.drawio)
+
+Or use the page attribute:
+![Foo Diagram](my-diagram.drawio){ page="Page-2" }
+![Bar Diagram](my-diagram.drawio){ page="my-custom-page-name" }
 ```
 
 ## Setup
 
 Install plugin using pip:
 
-```
+```bash
 pip install mkdocs-drawio
 ```
 
@@ -67,7 +74,7 @@ plugins:
       toolbar: true  # control if hovering on a diagram shows a toolbar for zooming or not (default: true)
       tooltips: true # control if tooltips will be shown (default: true)
       edit: true     # control if edit button will be shown in the lightbox view (default: true)
-      border: 10     # increase or decrease the border / margin around your diagrams (default: 5) 
+      border: 10     # increase or decrease the border / margin around your diagrams (default: 0)
 ```
 
 ## Material Integration
@@ -105,7 +112,6 @@ document$.subscribe(({ body }) => {
 3. Adds the drawio viewer library
 4. Searches through the generated html for all `img` tags that have a source of type `.drawio`
 5. Replaces the found `img` tags with `mxgraph` html blocks (actual drawio diagram content). For more details, please have a look at the [official drawio.com documentation](https://www.drawio.com/doc/faq/embed-html).
-
 
 ## Contribution guide
 

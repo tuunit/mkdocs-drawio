@@ -1,6 +1,5 @@
 import re
 import json
-import mkdocs
 import string
 import logging
 from lxml import etree
@@ -9,10 +8,8 @@ from html import escape
 from pathlib import Path
 from bs4 import BeautifulSoup
 from mkdocs.plugins import BasePlugin
+from mkdocs.config import base, config_options as c
 
-# ------------------------
-# Constants and utilities
-# ------------------------
 SUB_TEMPLATE = string.Template(
     '<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="$config"></div>'
 )
@@ -20,26 +17,22 @@ SUB_TEMPLATE = string.Template(
 LOGGER = logging.getLogger("mkdocs.plugins.diagrams")
 
 
-# ------------------------
-# Plugin
-# ------------------------
-class DrawioPlugin(BasePlugin):
+class DrawioConfig(base.Config):
+    """Configuration options for the Drawio Plugin"""
+
+    viewer_js = c.Type(
+        str, default="https://viewer.diagrams.net/js/viewer-static.min.js"
+    )
+    toolbar = c.Type(bool, default=True)
+    tooltips = c.Type(bool, default=True)
+    border = c.Type(int, default=0)
+    edit = c.Type(bool, default=True)
+
+
+class DrawioPlugin(BasePlugin[DrawioConfig]):
     """
     Plugin for embedding Drawio Diagrams into your MkDocs
     """
-
-    config_scheme = (
-        (
-            "viewer_js",
-            mkdocs.config.config_options.Type(
-                str, default="https://viewer.diagrams.net/js/viewer-static.min.js"
-            ),
-        ),
-        ("toolbar", mkdocs.config.config_options.Type(bool, default=True)),
-        ("tooltips", mkdocs.config.config_options.Type(bool, default=True)),
-        ("border", mkdocs.config.config_options.Type(int, default=0)),
-        ("edit", mkdocs.config.config_options.Type(bool, default=True)),
-    )
 
     def on_post_page(self, output_content, config, page, **kwargs):
         return self.render_drawio_diagrams(output_content, page)
@@ -48,16 +41,14 @@ class DrawioPlugin(BasePlugin):
         if ".drawio" not in output_content.lower():
             return output_content
 
-        plugin_config = self.config.copy()
-
         soup = BeautifulSoup(output_content, "html.parser")
 
         diagram_config = {
-            "toolbar": "zoom" if plugin_config["toolbar"] else None,
-            "tooltips": "1" if plugin_config["tooltips"] else "0",
-            "border": plugin_config["border"] + 5,
+            "toolbar": "zoom" if self.config.toolbar else None,
+            "tooltips": "1" if self.config.tooltips else "0",
+            "border": self.config.border + 5,
             "resize": "1",
-            "edit": "_blank" if plugin_config["edit"] else None,
+            "edit": "_blank" if self.config.edit else None,
         }
 
         # search for images using drawio extension
@@ -66,7 +57,7 @@ class DrawioPlugin(BasePlugin):
             return output_content
 
         # add drawio library to body
-        lib = soup.new_tag("script", src=plugin_config["viewer_js"])
+        lib = soup.new_tag("script", src=self.config.viewer_js)
         soup.body.append(lib)
 
         # substitute images with embedded drawio diagram
@@ -79,9 +70,13 @@ class DrawioPlugin(BasePlugin):
                     "html.parser",
                 )
             else:
+                diagram_page = diagram["alt"]
+                # Use page attribute instead of alt if it is set
+                if "page" in diagram:
+                    diagram_page = diagram["page"]
                 mxgraph = BeautifulSoup(
                     DrawioPlugin.substitute_with_file(
-                        diagram_config, path, diagram["src"], diagram["alt"]
+                        diagram_config, path, diagram["src"], diagram_page
                     ),
                     "html.parser",
                 )

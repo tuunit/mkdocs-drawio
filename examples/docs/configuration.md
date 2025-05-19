@@ -21,13 +21,13 @@ plugins:
       # Control if tooltips will be shown (data-tooltips)
       tooltips: true
 
-      # Control if edit button will be shown in the lightbox view
-      # (data-edit)
-      edit: true
-
       # Increase or decrease the padding around your diagrams
       # (data-border)
       border: 5
+
+      # Control if edit button will be shown in the lightbox view
+      # (data-edit)
+      edit: true
 ```
 ## HTML Attributes
 For each global configuration option you can also use the attribute in the diagram itself. This will override the global configuration. Here is an example:
