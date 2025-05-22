@@ -15,6 +15,7 @@ nav:
       - Relative Paths (Subpage): "tests/relative-paths/example.md"
       - Pagging: "tests/pagging/index.md"
       - External URL: "tests/external-url/index.md"
+      - SVG Diagram: "tests/svg/index.md"
 
 theme:
   name: material

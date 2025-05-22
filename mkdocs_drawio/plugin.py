@@ -52,7 +52,9 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         }
 
         # search for images using drawio extension
-        diagrams = soup.find_all("img", src=re.compile(r".*\.drawio$", re.IGNORECASE))
+        diagrams = soup.find_all(
+            "img", src=re.compile(r".*\.drawio(.svg)?$", re.IGNORECASE)
+        )
         if len(diagrams) == 0:
             return output_content
 
