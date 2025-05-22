@@ -39,8 +39,6 @@ Or use the page attribute:
 ![Bar Diagram](my-diagram.drawio){ page="my-custom-page-name" }
 ```
 
-Furthermore, it supports Dark Mode 🕶️
-
 ## Setup
 
 Install plugin using pip:
@@ -77,6 +75,7 @@ plugins:
       tooltips: true # control if tooltips will be shown (default: true)
       edit: true     # control if edit button will be shown in the lightbox view (default: true)
       border: 10     # increase or decrease the border / margin around your diagrams (default: 0)
+      darkmode: true # support darkmode. allows for automatic switching between dark and lightmode based on the theme toggle. (default: false)
 ```
 
 ## Material Integration

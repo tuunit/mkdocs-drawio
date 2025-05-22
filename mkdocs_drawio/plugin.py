@@ -28,6 +28,7 @@ class DrawioConfig(base.Config):
     tooltips = c.Type(bool, default=True)
     border = c.Type(int, default=0)
     edit = c.Type(bool, default=True)
+    darkmode = c.Type(bool, default=False)
 
 
 class DrawioPlugin(BasePlugin[DrawioConfig]):
@@ -141,8 +142,12 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
     def on_config(self, config: base.Config):
         """Load embedded files"""
         self.base = Path(__file__).parent
-        self.css = ["css/drawio.css"]
-        self.js = ["js/drawio.js"]
+        self.css = []
+        self.js = []
+
+        if self.config.darkmode:
+            self.css.append("css/drawio-darkmode.css")
+            self.js.append("js/drawio-darkmode.js")
 
         for path in self.css:
             config.extra_css.append(str(Path("/") / path))

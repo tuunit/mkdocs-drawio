@@ -28,6 +28,11 @@ plugins:
       # Control if edit button will be shown in the lightbox view
       # (data-edit)
       edit: true
+
+      # Control if darkmode is supported
+      # When activated the color scheme for your diagrams is automatically toggled
+      # based on the selected theme. Supports classic mkdocs and mkdocs-material.
+      darkmode: true 
 ```
 ## HTML Attributes
 For each global configuration option you can also use the attribute in the diagram itself. This will override the global configuration. Here is an example:
