@@ -48,6 +48,7 @@ plugins:
       tooltips: true
       edit: true
       border: 20
+      darkmode: true
   - print-site
 
 repo_url: https://github.com/tuunit/mkdocs-drawio

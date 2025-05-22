@@ -7,6 +7,7 @@ from typing import Dict
 from html import escape
 from pathlib import Path
 from bs4 import BeautifulSoup
+from mkdocs.utils import copy_file
 from mkdocs.plugins import BasePlugin
 from mkdocs.config import base, config_options as c
 
@@ -27,6 +28,7 @@ class DrawioConfig(base.Config):
     tooltips = c.Type(bool, default=True)
     border = c.Type(int, default=0)
     edit = c.Type(bool, default=True)
+    darkmode = c.Type(bool, default=False)
 
 
 class DrawioPlugin(BasePlugin[DrawioConfig]):
@@ -136,3 +138,24 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                 f"Error: Could not properly parse page name '{alt}' for diagram '{src}' on path '{path}'"
             )
         return ""
+
+    def on_config(self, config: base.Config):
+        """Load embedded files"""
+        self.base = Path(__file__).parent
+        self.css = []
+        self.js = []
+
+        if self.config.darkmode:
+            self.css.append("css/drawio-darkmode.css")
+            self.js.append("js/drawio-darkmode.js")
+
+        for path in self.css:
+            config.extra_css.append(str(Path("/") / path))
+        for path in self.js:
+            config.extra_javascript.append(str(Path("/") / path))
+
+    def on_post_build(self, config: base.Config):
+        """Copy embedded files to the site directory"""
+        site = Path(config["site_dir"])
+        for path in self.css + self.js:
+            copy_file(self.base / path, site / path)

@@ -35,6 +35,7 @@ The currently supported features are:
 * Support for multi page diagrams by selecting which page to display.
 * Compatible with `mkdocs-caption` and `mkdocs-glightbox`.
 * Print and edit button.
+* Dark Mode 🕶️
 
 ## Usage
 
