@@ -1,0 +1,34 @@
+site_name: test_mkdocs_drawio
+docs_dir: docs
+nav:
+  - Home: index.md
+  - Tests:
+    - Simple Diagram: 'tests/simple-diagram/index.md'
+    - Error Handling: 'tests/error-handling/index.md'
+    - Configuration: 'tests/configuration/index.md'
+    - Code Blocks: 'tests/code-blocks/index.md'
+    - Relative Paths (a): 'tests/relative-paths/index.md'
+    - Relative Paths (b): 'tests/relative-paths/example.md'
+    - Pagging: 'tests/pagging/index.md'
+    - External URL: 'tests/external-url/index.md'
+    - SVG Diagram: 'tests/svg/index.md'
+
+theme:
+    name: mkdocs
+    user_color_mode_toggle: true
+
+plugins:
+    - search
+    - drawio:
+        toolbar: true
+        tooltips: true
+        edit: true
+        border: 20
+    - print-site
+
+
+markdown_extensions:
+  - attr_list
+  - pymdownx.superfences
+
+repo_url: https://github.com/tuunit/mkdocs-drawio

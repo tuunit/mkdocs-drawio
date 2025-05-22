@@ -39,6 +39,8 @@ Or use the page attribute:
 ![Bar Diagram](my-diagram.drawio){ page="my-custom-page-name" }
 ```
 
+Furthermore, it supports Dark Mode 🕶️
+
 ## Setup
 
 Install plugin using pip:
