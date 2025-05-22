@@ -150,9 +150,9 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
             self.js.append("js/drawio-darkmode.js")
 
         for path in self.css:
-            config.extra_css.append(str(Path("/") / path))
+            config.extra_css.append(str(path))
         for path in self.js:
-            config.extra_javascript.append(str(Path("/") / path))
+            config.extra_javascript.append(str(path))
 
     def on_post_build(self, config: base.Config):
         """Copy embedded files to the site directory"""
