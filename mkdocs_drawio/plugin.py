@@ -18,13 +18,37 @@ SUB_TEMPLATE = string.Template(
 LOGGER = logging.getLogger("mkdocs.plugins.diagrams")
 
 
+class Toolbar(base.Config):
+    """Configuration options for the toolbar, mostly taken from
+    https://www.drawio.com/doc/faq/embed-html-options
+    """
+
+    pages = c.Type(bool, default=True)
+    """ Display the page selector in the toolbar """
+
+    zoom = c.Type(bool, default=True)
+    """ Display the zoom control in the toolbar """
+
+    layers = c.Type(bool, default=True)
+    """ Display the layers control in the toolbar """
+
+    lightbox = c.Type(bool, default=True)
+    """ Display the open in lightbox control in the toolbar """
+
+    position = c.Choice(["top", "bottom"], default="top")
+    """ Position of the toolbar """
+
+    no_hide = c.Type(bool, default=False)
+    """ Whether to hide the toolbar when the mouse is not over it """
+
+
 class DrawioConfig(base.Config):
     """Configuration options for the Drawio Plugin"""
 
     viewer_js = c.Type(
         str, default="https://viewer.diagrams.net/js/viewer-static.min.js"
     )
-    toolbar = c.Type(bool, default=True)
+    toolbar = c.Type(Toolbar, default=True)
     tooltips = c.Type(bool, default=True)
     border = c.Type(int, default=0)
     edit = c.Type(bool, default=True)
@@ -101,7 +125,9 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
             diagram_xml = etree.parse(path.joinpath(src).resolve())
         except Exception:
             LOGGER.error(
-                f"Error: Provided diagram file '{src}' on path '{path}' is not a valid diagram"
+                f"Error: Provided diagram file '{src}' on path '{
+                    path
+                }' is not a valid diagram"
             )
             diagram_xml = etree.fromstring("<invalid/>")
 
@@ -129,13 +155,17 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                 return etree.tostring(result, encoding=str)
             else:
                 LOGGER.warning(
-                    f"Warning: Found {len(page)} results for page name '{alt}' for diagram '{src}' on path '{path}'"
+                    f"Warning: Found {len(page)} results for page name '{
+                        alt
+                    }' for diagram '{src}' on path '{path}'"
                 )
 
             return etree.tostring(mxfile, encoding=str)
         except Exception:
             LOGGER.error(
-                f"Error: Could not properly parse page name '{alt}' for diagram '{src}' on path '{path}'"
+                f"Error: Could not properly parse page name '{alt}' for diagram '{
+                    src
+                }' on path '{path}'"
             )
         return ""
 

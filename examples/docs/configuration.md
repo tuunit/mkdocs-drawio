@@ -15,9 +15,6 @@ Further options are the following with their default value:
 ```yaml
 plugins:
   - drawio:
-      # Control if hovering on a diagram shows a toolbar for zooming or not
-      toolbar: true
-
       # Control if tooltips will be shown (data-tooltips)
       tooltips: true
 
@@ -33,6 +30,28 @@ plugins:
       # When activated the color scheme for your diagrams is automatically toggled
       # based on the selected theme. Supports classic mkdocs and mkdocs-material.
       darkmode: true 
+
+      # Control the looks and behaviour of the toolbar
+      toolbar: 
+        # Display the zoom control (data-toolbar-zoom)
+        zoom: true
+
+        # Display the page selector (data-toolbar-pages)
+        pages: true
+
+        # Display the layers control (data-toolbar-layers)
+        layers: true
+
+        # Display the lightbox button (data-toolbar-lightbox)
+        lightbox: true
+
+        # Do not hide the toolbar when hovering over the diagram
+        # (data-toolbar-nohide)
+        nohide: false
+
+        # Control the position of the toolbar (top or bottom)
+        # (data-toolbar-position)
+        position: "top"
 ```
 ## HTML Attributes
 For each global configuration option you can also use the attribute in the diagram itself. This will override the global configuration. Here is an example:
