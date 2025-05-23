@@ -1,0 +1,15 @@
+/* Drawio Viewer uses color-scheme attribute to switch between light and dark mode
+   Let it synchronize with the Material for MkDocs theme color scheme */
+:root {
+  color-scheme: light;
+}
+
+/* Material for MkDocs Theme */
+[data-md-color-scheme="slate"] {
+  color-scheme: dark;
+}
+
+/* Mkdocs Theme */
+[data-bs-theme="dark"] {
+  color-scheme: dark;
+}
