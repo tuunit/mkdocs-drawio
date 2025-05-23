@@ -14,7 +14,11 @@ keywords = [
     "mkdocs", "plugin", "markdown", "drawio"
 ]
 packages = [
-    { include = "mkdocs_drawio/plugin.py" },
+    { include = "mkdocs_drawio" },
+]
+include = [
+    "mkdocs_drawio/css/*.css",
+    "mkdocs_drawio/js/*.js",
 ]
 
 [tool.poetry.dependencies]
