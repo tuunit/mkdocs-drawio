@@ -45,7 +45,11 @@ markdown_extensions:
 plugins:
   - search
   - drawio:
-      toolbar: true
+      toolbar:
+        position: "bottom"
+        zoom: true
+        lightbox: false # Hide the lightbox button from the toolbar
+      lightbox: true # Still allow clicking on the diagram to open the lightbox
       tooltips: true
       edit: true
       border: 20
