@@ -74,10 +74,14 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                     "html.parser",
                 )
             else:
-                diagram_page = diagram["alt"]
+                diagram_page = ""
+
                 # Use page attribute instead of alt if it is set
-                if "page" in diagram:
-                    diagram_page = diagram["page"]
+                if diagram.has_attr("page"):
+                    diagram_page = diagram.get("page")
+                else:
+                    diagram_page = diagram.get("alt")
+
                 mxgraph = BeautifulSoup(
                     DrawioPlugin.substitute_with_file(
                         diagram_config, path, diagram["src"], diagram_page
@@ -96,48 +100,46 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
 
     @staticmethod
-    def substitute_with_file(config: Dict, path: Path, src: str, alt: str) -> str:
+    def substitute_with_file(config: Dict, path: Path, src: str, page: str) -> str:
         try:
             diagram_xml = etree.parse(path.joinpath(src).resolve())
-        except Exception:
+        except Exception as e:
             LOGGER.error(
-                f"Error: Provided diagram file '{src}' on path '{path}' is not a valid diagram"
+                f"Error: Could not parse diagram file '{src}' on path '{path}': {e}"
             )
-            diagram_xml = etree.fromstring("<invalid/>")
+            config["xml"] = ""
+            return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
 
-        diagram = DrawioPlugin.parse_diagram(diagram_xml, alt)
+        diagram = DrawioPlugin.parse_diagram(diagram_xml, page)
         config["xml"] = diagram
-
         return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
 
     @staticmethod
-    def parse_diagram(data, alt, src="", path=None) -> str:
-        if alt is None or len(alt) == 0:
-            return etree.tostring(data, encoding=str)
+    def parse_diagram(data, page_name, src="", path=None) -> str:
+        mxfile_nodes = data.xpath("//mxfile")
 
-        try:
-            mxfile = data.xpath("//mxfile")[0]
+        if not mxfile_nodes:
+            if data.xpath("//*[local-name()='svg']") is not None:
+                return etree.tostring(data, encoding=str)
+            return ""
 
-            # try to parse for a specific page by using the alt attribute
-            page = mxfile.xpath(f"//diagram[@name='{alt}']")
+        mxfile = mxfile_nodes[0]
 
-            if len(page) == 1:
-                parser = etree.XMLParser()
-                result = parser.makeelement(mxfile.tag, mxfile.attrib)
-
-                result.append(page[0])
-                return etree.tostring(result, encoding=str)
-            else:
-                LOGGER.warning(
-                    f"Warning: Found {len(page)} results for page name '{alt}' for diagram '{src}' on path '{path}'"
-                )
-
+        if not page_name:
             return etree.tostring(mxfile, encoding=str)
-        except Exception:
-            LOGGER.error(
-                f"Error: Could not properly parse page name '{alt}' for diagram '{src}' on path '{path}'"
-            )
-        return ""
+
+        page = mxfile.xpath(f"//diagram[@name='{page_name}']")
+        if len(page) == 1:
+            parser = etree.XMLParser()
+            result = parser.makeelement(mxfile.tag, mxfile.attrib)
+            result.append(page[0])
+            return etree.tostring(result, encoding=str)
+
+        LOGGER.warning(
+            f"Warning: Found {len(page)} results for page name '{page_name}' "
+            f"falling back to first page."
+        )
+        return etree.tostring(mxfile, encoding=str)
 
     def on_config(self, config: base.Config):
         """Load embedded files"""
