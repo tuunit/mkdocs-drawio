@@ -3,8 +3,8 @@
 [![Publish Badge](https://github.com/tuunit/mkdocs-drawio/workflows/Publish/badge.svg)](https://github.com/tuunit/mkdocs-drawio/actions)
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
 
-Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then. 
-[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin) 
+Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then.
+[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin)
 
 ## Features
 
@@ -39,6 +39,8 @@ Or use the page attribute:
 ![Bar Diagram](my-diagram.drawio){ page="my-custom-page-name" }
 ```
 
+If you prefer to keep the caption purely descriptive, set `use_page_attribute: true` in your plugin configuration. When enabled, the plugin no longer uses the alt text for page selection and instead expects the `page` attribute provided by the `attr_list` markdown extension.
+
 ## Setup
 
 Install plugin using pip:
@@ -66,16 +68,34 @@ plugins:
       viewer_js: "https://viewer.diagrams.net/js/viewer-static.min.js"
 ```
 
-Further options are:
+Further options are the following, with their default value:
 
 ```yaml
 plugins:
   - drawio:
-      toolbar: true  # control if hovering on a diagram shows a toolbar for zooming or not (default: true)
-      tooltips: true # control if tooltips will be shown (default: true)
-      edit: true     # control if edit button will be shown in the lightbox view (default: true)
-      border: 10     # increase or decrease the border / margin around your diagrams (default: 0)
-      darkmode: true # support darkmode. allows for automatic switching between dark and lightmode based on the theme toggle. (default: false)
+      # control if hovering on a diagram shows a
+      # toolbar for zooming or not
+      toolbar: true
+
+      # control if tooltips will be shown
+      tooltips: true
+
+      # control if edit button will be shown in the
+      # lightbox view
+      edit: true
+
+      # increase or decrease the border / margin around your diagrams
+      border: 0
+
+      # support darkmode. allows for automatic switching
+      # between dark and lightmode based on the theme toggle.
+      darkmode: false
+
+      # treat the image caption as the diagram page name.
+      # Set to true to use the attr_list 'page' attribute instead.
+      # this option is not enabled by default to maintain backward
+      # compatibility.
+      use_page_attribute: false
 ```
 
 ## Material Integration

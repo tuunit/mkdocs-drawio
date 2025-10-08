@@ -1,8 +1,10 @@
 # Pagging
 
 You can either use the `alt` text of the image for pagging or use an attribute
-page for pagging if you have the `attr_list` markdown extension installed in 
+page for pagging if you have the `attr_list` markdown extension installed in
 your `mkdocs.yaml`.
+
+> By default the plugin uses the caption (`alt` text) as the page selector. Set `use_page_attribute: true` in your plugin configuration if you always want to rely on the `page` attribute instead.
 
 ```yaml
 markdown_extensions:
@@ -47,9 +49,9 @@ markdown_extensions:
 === "Diagram"
     Below you should see Page-1 (default) because the specified Page-3 has not been found:
     ![Page-3](test.drawio)
-    
+
     Furthoremore, you should see a warning in your mkdocs server similar to:
-    
+
     ```bash
     WARNING -  Warning: Found 0 results for page name 'Page-3' for diagram 'test.drawio' on path '/tmp/mkdocs_ce1qjhyn/test2'
     ```
