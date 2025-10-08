@@ -57,7 +57,7 @@ Or you can use external urls:
 ![](https://example.com/diagram.drawio)
 ```
 
-Additionally this plugin supports multi page diagrams by using the `alt` text (caption) to select the pages by name. This behaviour is controlled by the `use_page_attribute` configuration option and is enabled by default:
+Additionally this plugin supports multi page diagrams by using the `alt` text (caption) to select the pages by name. This behaviour is controlled by the `use_page_attribute` configuration option, which is set to `false` by default.
 
 ```markdown
 ![Page-2](my-diagram.drawio)
