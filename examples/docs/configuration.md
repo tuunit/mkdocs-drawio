@@ -30,12 +30,20 @@ plugins:
       edit: true
 
       # Control if darkmode is supported
-      # When activated the color scheme for your diagrams is automatically toggled
-      # based on the selected theme. Supports classic mkdocs and mkdocs-material.
-      darkmode: true 
+      # When activated the color scheme for your diagrams is automatically
+      # toggled based on the selected theme. Supports classic mkdocs and
+      # mkdocs-material.
+      darkmode: true
+
+      # Control if the image caption is used to select a Drawio page
+      # Disable to rely on the attr_list 'page' attribute instead
+      use_page_attribute: true
 ```
+
 ## HTML Attributes
+
 For each global configuration option you can also use the attribute in the diagram itself. This will override the global configuration. Here is an example:
+
 ```markdown
 ![](my-diagram.drawio){ data-toolbar-zoom="false" }
 ```
@@ -46,6 +54,9 @@ To use these attributes you need to enable the markdown extension `attr_list` in
 markdown_extensions:
   - attr_list
 ```
+
+> Note: When `use_page_attribute` is set to `true`, enabling the `attr_list` extension becomes mandatory because page selection is driven exclusively through the `page` attribute.
+
 ## Material Integration
 
 If you are using the Material Theme and want to use the [instant-loading](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/?h=instant#instant-loading) feature. You will have to configure the following:

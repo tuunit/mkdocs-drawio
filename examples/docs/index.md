@@ -2,8 +2,8 @@
 
 This plugin allows you to embed draw.io diagrams in your MkDocs documentation. It is compatible with most MkDocs themes, but specifically tested with the Material theme and the MkDocs default theme.
 
-Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then. 
-[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin) 
+Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then.
+[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin)
 
 ## Installation
 
@@ -57,9 +57,23 @@ Or you can use external urls:
 ![](https://example.com/diagram.drawio)
 ```
 
-Additionally this plugin supports multi page diagrams by using the `alt` text to select the pages by name:
+Additionally this plugin supports multi page diagrams by using the `alt` text (caption) to select the pages by name. This behaviour is controlled by the `use_page_attribute` configuration option and is enabled by default:
 
 ```markdown
 ![Page-2](my-diagram.drawio)
 ![my-custom-page-name](my-diagram.drawio)
+```
+
+If you prefer to keep the caption descriptive and select pages via attributes instead, disable the option in your `mkdocs.yml`:
+
+```yaml
+plugins:
+  - drawio:
+      use_page_attribute: false
+```
+
+With the option disabled, enable the `attr_list` markdown extension and use the `page` attribute:
+
+```markdown
+![Diagram caption](my-diagram.drawio){ page="Page-2" }
 ```
