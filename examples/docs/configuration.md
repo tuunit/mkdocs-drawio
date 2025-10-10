@@ -33,6 +33,13 @@ plugins:
       # When activated the color scheme for your diagrams is automatically toggled
       # based on the selected theme. Supports classic mkdocs and mkdocs-material.
       darkmode: true 
+  
+      # Set the color of hyperlink highlighting
+      # When a diagram element has a hyperlink on it, the element is highlighted
+      # on mouse hover over to better indicate a hylerlink is present. This
+      # parameter controls the color of the highlight boarder. If omitted, no
+      # highlighting happens.
+      highlight: "#0000FF"
 ```
 ## HTML Attributes
 For each global configuration option you can also use the attribute in the diagram itself. This will override the global configuration. Here is an example:
