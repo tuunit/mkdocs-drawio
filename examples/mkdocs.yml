@@ -50,7 +50,7 @@ plugins:
       edit: true
       border: 20
       darkmode: true
-      highlight: "#000FF"
+      highlight: "#0000FF"
   - print-site
 
 repo_url: https://github.com/tuunit/mkdocs-drawio

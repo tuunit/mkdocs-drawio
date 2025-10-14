@@ -29,7 +29,7 @@ class DrawioConfig(base.Config):
     border = c.Type(int, default=0)
     edit = c.Type(bool, default=True)
     darkmode = c.Type(bool, default=False)
-    highlight = c.Type(str, default="NULL")
+    highlight = c.Type(str, default="")
 
 
 class DrawioPlugin(BasePlugin[DrawioConfig]):
@@ -52,7 +52,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
             "border": self.config.border + 5,
             "resize": "1",
             "edit": "_blank" if self.config.edit else None,
-            "highlight": self.config.highlight if self.config.highlight != "NULL" else None,
+            "highlight": self.config.highlight if self.config.highlight else None,
         }
 
         # search for images using drawio extension
