@@ -16,6 +16,7 @@ nav:
       - Pagging: "tests/pagging/index.md"
       - External URL: "tests/external-url/index.md"
       - SVG Diagram: "tests/svg/index.md"
+      - Hyperlinks: "tests/hyperlinks/index.md"
 
 theme:
   name: material
@@ -49,6 +50,7 @@ plugins:
       edit: true
       border: 20
       darkmode: true
+      highlight: "#0000FF"
   - print-site
 
 repo_url: https://github.com/tuunit/mkdocs-drawio
