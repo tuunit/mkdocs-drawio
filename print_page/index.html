@@ -1,0 +1,929 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
+<title>Print Site - MkDocs Drawio Plugin</title>
+<link href="../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../css/print-site.css" rel="stylesheet"/>
+<link href="../css/print-site-material.css" rel="stylesheet"/>
+<link href="../css/drawio-darkmode.css" rel="stylesheet"/>
+<script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
+        })
+        </script>
+        </head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#section-1">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="MkDocs Drawio Plugin" class="md-header__button md-logo" data-md-component="logo" href=".." title="MkDocs Drawio Plugin">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            MkDocs Drawio Plugin
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Print Site
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/tuunit/mkdocs-drawio" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="MkDocs Drawio Plugin" class="md-nav__button md-logo" data-md-component="logo" href=".." title="MkDocs Drawio Plugin">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    MkDocs Drawio Plugin
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/tuunit/mkdocs-drawio" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_1_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../configuration/">
+<span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../plumbing/">
+<span class="md-ellipsis">
+    
+  
+    Plumbing
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/simple-diagram/">
+<span class="md-ellipsis">
+    
+  
+    Simple Diagram
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/error-handling/">
+<span class="md-ellipsis">
+    
+  
+    Error Handling
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/configuration/">
+<span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/code-blocks/">
+<span class="md-ellipsis">
+    
+  
+    Code Blocks
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/relative-paths/">
+<span class="md-ellipsis">
+    
+  
+    Relative Paths (Index)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/relative-paths/example/">
+<span class="md-ellipsis">
+    
+  
+    Relative Paths (Subpage)
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/pagging/">
+<span class="md-ellipsis">
+    
+  
+    Pagging
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/external-url/">
+<span class="md-ellipsis">
+    
+  
+    External URL
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/svg/">
+<span class="md-ellipsis">
+    
+  
+    SVG Diagram
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tests/hyperlinks/">
+<span class="md-ellipsis">
+    
+  
+    Hyperlinks
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#section-1">
+<span class="md-ellipsis">
+      
+        1 Documentation
+      
+    </span>
+</a>
+<nav aria-label="1 Documentation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#index">
+<span class="md-ellipsis">
+      
+        1.1 Getting Started
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration">
+<span class="md-ellipsis">
+      
+        1.2 Configuration
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#plumbing">
+<span class="md-ellipsis">
+      
+        1.3 Plumbing
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#section-2">
+<span class="md-ellipsis">
+      
+        2 Examples
+      
+    </span>
+</a>
+<nav aria-label="2 Examples" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-simple-diagram">
+<span class="md-ellipsis">
+      
+        2.1 Simple Diagram
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-error-handling">
+<span class="md-ellipsis">
+      
+        2.2 Error Handling
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-configuration">
+<span class="md-ellipsis">
+      
+        2.3 Configuration
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-code-blocks">
+<span class="md-ellipsis">
+      
+        2.4 Code Blocks
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-relative-paths">
+<span class="md-ellipsis">
+      
+        2.5 Relative Paths (Index)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-relative-paths-example">
+<span class="md-ellipsis">
+      
+        2.6 Relative Paths (Subpage)
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-pagging">
+<span class="md-ellipsis">
+      
+        2.7 Pagging
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-external-url">
+<span class="md-ellipsis">
+      
+        2.8 External URL
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-svg">
+<span class="md-ellipsis">
+      
+        2.9 SVG Diagram
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#tests-hyperlinks">
+<span class="md-ellipsis">
+      
+        2.10 Hyperlinks
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="print-site-enumerate-headings print-site-enumerate-figures" id="print-site-page">
+<section class="print-page">
+<div data-toc-depth="3" id="print-page-toc">
+<nav class="print-page-toc-nav" role="navigation">
+<h1 class="print-page-toc-title">Table of Contents</h1>
+</nav>
+</div>
+</section>
+<section class="print-page md-section" heading-number="1" id="section-1">
+<h1>Documentation<a class="headerlink" href="#section-1" title="Permanent link"></a>
+</h1>
+<section class="print-page" heading-number="1.1" id="index"><h1 id="index-mkdocs-plugin-for-embedding-drawio-files">MkDocs Plugin for embedding Drawio files</h1>
+<p>This plugin allows you to embed draw.io diagrams in your MkDocs documentation. It is compatible with most MkDocs themes, but specifically tested with the Material theme and the MkDocs default theme.</p>
+<p>Sergey (<a href="https://github.com/onixpro">onixpro</a>) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then. 
+<a href="https://www.buymeacoffee.com/SergeyLukin">Buy Sergey a ☕</a> </p>
+<h2 id="index-installation">Installation</h2>
+<p>Install the plugin using pip or poetry:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-drawio
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>poetry<span class="w"> </span>add<span class="w"> </span>mkdocs-drawio
+</code></pre></div>
+<p>Then add the plugin to your <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drawio</span>
+</code></pre></div>
+<h2 id="index-features">Features</h2>
+<p>The currently supported features are:</p>
+<ul>
+<li>Embed draw.io diagrams as normal markdown images in your documentation.</li>
+<li>Use diagrams hosted within your own docs or external urls.</li>
+<li>Support for multi page diagrams by selecting which page to display.</li>
+<li>Compatible with <code>mkdocs-caption</code> and <code>mkdocs-glightbox</code>.</li>
+<li>Print and edit button.</li>
+<li>Dark Mode 🕶️</li>
+</ul>
+<h2 id="index-usage">Usage</h2>
+<p>Simply add an image as you would normally do in markdown:</p>
+<div class="highlight"><pre><span></span><code>Absolute path:
+![](/assets/my-diagram.drawio)
+
+Same directory as the markdown file:
+![](my-diagram.drawio)
+
+Relative directory to the markdown file:
+![](../my-diagram.drawio)
+
+
+Or you can use external urls:
+![](https://example.com/diagram.drawio)
+</code></pre></div>
+<p>Additionally this plugin supports multi page diagrams by using the <code>alt</code> text to select the pages by name:</p>
+<div class="highlight"><pre><span></span><code>![<span class="nt">Page-2</span>](<span class="na">my-diagram.drawio</span>)
+![<span class="nt">my-custom-page-name</span>](<span class="na">my-diagram.drawio</span>)
+</code></pre></div></section><section class="print-page" heading-number="1.2" id="configuration"><h1 id="configuration-configuration">Configuration</h1>
+<h2 id="configuration-diagram-options">Diagram options</h2>
+<p>By default the plugin uses the official url for the minified drawio javascript library. To use a custom source for the drawio viewer you can overwritte the url. This might be useful in airlocked environments.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">drawio</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">viewer_js</span><span class="p">:</span><span class="w"> </span><span class="s">"https://viewer.diagrams.net/js/viewer-static.min.js"</span>
+</code></pre></div>
+<p>Further options are the following with their default value:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">drawio</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Control if hovering on a diagram shows a toolbar for zooming or not</span>
+<span class="w">      </span><span class="nt">toolbar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">      </span><span class="c1"># Control if tooltips will be shown (data-tooltips)</span>
+<span class="w">      </span><span class="nt">tooltips</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">      </span><span class="c1"># Increase or decrease the padding around your diagrams</span>
+<span class="w">      </span><span class="c1"># (data-border)</span>
+<span class="w">      </span><span class="nt">border</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+
+<span class="w">      </span><span class="c1"># Control if edit button will be shown in the lightbox view</span>
+<span class="w">      </span><span class="c1"># (data-edit)</span>
+<span class="w">      </span><span class="nt">edit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">      </span><span class="c1"># Control if darkmode is supported</span>
+<span class="w">      </span><span class="c1"># When activated the color scheme for your diagrams is automatically toggled</span>
+<span class="w">      </span><span class="c1"># based on the selected theme. Supports classic mkdocs and mkdocs-material.</span>
+<span class="w">      </span><span class="nt">darkmode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span>
+
+<span class="w">      </span><span class="c1"># Set the color of hyperlink highlighting</span>
+<span class="w">      </span><span class="c1"># When a diagram element has a hyperlink on it, the element is highlighted</span>
+<span class="w">      </span><span class="c1"># on mouse hover over to better indicate a hylerlink is present. This</span>
+<span class="w">      </span><span class="c1"># parameter controls the color of the highlight boarder. If omitted, no</span>
+<span class="w">      </span><span class="c1"># highlighting happens.</span>
+<span class="w">      </span><span class="nt">highlight</span><span class="p">:</span><span class="w"> </span><span class="s">"#0000FF"</span>
+</code></pre></div>
+<h2 id="configuration-html-attributes">HTML Attributes</h2>
+<p>For each global configuration option you can also use the attribute in the diagram itself. This will override the global configuration. Here is an example:
+<div class="highlight"><pre><span></span><code>![](my-diagram.drawio){ data-toolbar-zoom="false" }
+</code></pre></div></p>
+<p>To use these attributes you need to enable the markdown extension <code>attr_list</code> in your <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attr_list</span>
+</code></pre></div>
+<h2 id="configuration-material-integration">Material Integration</h2>
+<p>If you are using the Material Theme and want to use the <a href="https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/?h=instant#instant-loading">instant-loading</a> feature. You will have to configure the following:</p>
+<p>In your <code>mkdocs.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">theme</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<span class="w">  </span><span class="nt">features</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">navigation.instant</span>
+
+<span class="nt">plugins</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">drawio</span>
+
+<span class="nt">extra_javascript</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://viewer.diagrams.net/js/viewer-static.min.js</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">javascripts/drawio-reload.js</span>
+</code></pre></div>
+<p>Add <code>docs/javascripts/drawio-reload.js</code> to your project:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">document</span><span class="nx">$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(({</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">GraphViewer</span><span class="p">.</span><span class="nx">processElements</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></section><section class="print-page" heading-number="1.3" id="plumbing"><h1 id="plumbing-plumbing-and-internals">Plumbing and internals</h1>
+<p>For those who want to understand how the plugin works, here is a brief overview.</p>
+<h2 id="plumbing-diagramsnet">Diagrams.net</h2>
+<p><strong>Diagrams.net</strong> or <strong>Draw.io</strong> is a free online diagram software. It is great for creating diagrams, flowcharts, process diagrams, and more. </p>
+<p>It relies on JTGraph's <a href="https://jgraph.github.io/mxgraph/">mxGraph</a> library to render the diagrams. A mxGraph is a XML-based language that defines the structure of the diagram. Here an example</p>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile version=\"26.0.7\"&gt;\n  &lt;diagram name=\"Page-1\" id=\"mV4jbraemd7C51ydpzk2\"&gt;\n    &lt;mxGraphModel dx=\"565\" dy=\"355\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"394\" pageHeight=\"394\" math=\"0\" shadow=\"0\"&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\"0\"/&gt;\n        &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n        &lt;mxCell id=\"7JHgTfKEjFP575Ptm9la-1\" value=\"\" style=\"ellipse;whiteSpace=wrap;html=1;aspect=fixed;\" vertex=\"1\" parent=\"1\"&gt;\n          &lt;mxGeometry x=\"80\" y=\"40\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\"7JHgTfKEjFP575Ptm9la-2\" value=\"\" style=\"whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;\" vertex=\"1\" parent=\"1\"&gt;\n          &lt;mxGeometry x=\"180\" y=\"40\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;mxfile</span><span class="w"> </span><span class="na">host=</span><span class="s">"app.diagrams.net"</span><span class="w"> </span><span class="na">version=</span><span class="s">"26.0.7"</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;diagram</span><span class="w"> </span><span class="na">name=</span><span class="s">"Page-1"</span><span class="w"> </span><span class="na">id=</span><span class="s">"mV4jbraemd7C51ydpzk2"</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;mxGraphModel</span><span class="w"> </span><span class="na">dx=</span><span class="s">"565"</span><span class="w"> </span><span class="na">dy=</span><span class="s">"355"</span><span class="w"> </span><span class="na">grid=</span><span class="s">"1"</span><span class="w"> </span><span class="na">gridSize=</span><span class="s">"10"</span>
+<span class="w">        </span><span class="na">guides=</span><span class="s">"1"</span><span class="w"> </span><span class="na">tooltips=</span><span class="s">"1"</span><span class="w"> </span><span class="na">connect=</span><span class="s">"1"</span><span class="w"> </span><span class="na">arrows=</span><span class="s">"1"</span><span class="w"> </span><span class="na">fold=</span><span class="s">"1"</span>
+<span class="w">        </span><span class="na">page=</span><span class="s">"1"</span><span class="w"> </span><span class="na">pageScale=</span><span class="s">"1"</span><span class="w"> </span><span class="na">pageWidth=</span><span class="s">"394"</span><span class="w"> </span><span class="na">pageHeight=</span><span class="s">"394"</span>
+<span class="w">        </span><span class="na">math=</span><span class="s">"0"</span><span class="w"> </span><span class="na">shadow=</span><span class="s">"0"</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;root&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mxCell</span><span class="w"> </span><span class="na">id=</span><span class="s">"0"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mxCell</span><span class="w"> </span><span class="na">id=</span><span class="s">"1"</span><span class="w"> </span><span class="na">parent=</span><span class="s">"0"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mxCell</span><span class="w"> </span><span class="na">id=</span><span class="s">"7JHgTfKEjFP575Ptm9la-1"</span><span class="w"> </span><span class="na">value=</span><span class="s">""</span>
+<span class="w">            </span><span class="na">style=</span><span class="s">"ellipse;whiteSpace=wrap;html=1;aspect=fixed;"</span>
+<span class="w">            </span><span class="na">vertex=</span><span class="s">"1"</span><span class="w"> </span><span class="na">parent=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;mxGeometry</span><span class="w"> </span><span class="na">x=</span><span class="s">"80"</span><span class="w"> </span><span class="na">y=</span><span class="s">"40"</span><span class="w"> </span><span class="na">width=</span><span class="s">"80"</span><span class="w"> </span><span class="na">height=</span><span class="s">"80"</span><span class="w"> </span><span class="na">as=</span><span class="s">"geometry"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/mxCell&gt;</span>
+<span class="w">        </span><span class="nt">&lt;mxCell</span><span class="w"> </span><span class="na">id=</span><span class="s">"7JHgTfKEjFP575Ptm9la-2"</span><span class="w"> </span><span class="na">value=</span><span class="s">""</span>
+<span class="w">            </span><span class="na">style=</span><span class="s">"whiteSpace=wrap;html=1;aspect=fixed;</span>
+<span class="s">                   fillColor=#f8cecc;strokeColor=#b85450;"</span>
+<span class="w">            </span><span class="na">vertex=</span><span class="s">"1"</span><span class="w"> </span><span class="na">parent=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="w">          </span><span class="nt">&lt;mxGeometry</span><span class="w"> </span><span class="na">x=</span><span class="s">"180"</span><span class="w"> </span><span class="na">y=</span><span class="s">"40"</span><span class="w"> </span><span class="na">width=</span><span class="s">"80"</span><span class="w"> </span><span class="na">height=</span><span class="s">"80"</span><span class="w"> </span><span class="na">as=</span><span class="s">"geometry"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/mxCell&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/root&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/mxGraphModel&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/diagram&gt;</span>
+<span class="nt">&lt;/mxfile&gt;</span>
+</code></pre></div>
+<h2 id="plumbing-plumbing">Plumbing</h2>
+<p>The plugin heavily relies on the Draw.io GraphViewer to render diagrams. The plugin itself is only responsible for replacing markdown references of drawio diagrams with the actual content of the files, passing configuration options to the viewer library and ensure compatibility across MkDocs themes. </p>
+<p>Furthermore, it provides a way to extract pages from diagrams to only serve the necessary content to the user. This is useful when you have a large diagram and only want to show a specific part of it.</p>
+<p>How the plugin processes diagrams:</p>
+<ol>
+<li>mkdocs itself generates HTML for each markdown file in your docs.</li>
+<li><code>mkdocs-drawio</code> then attaches to the <code>on_post_page</code> event. For more details, please have a look at the <a href="https://www.mkdocs.org/dev-guide/plugins/#events">event lifecycle documentation</a></li>
+<li>Adds the drawio viewer javascript reference</li>
+<li>Searches through the generated HTML for all <code>img</code> tags that reference a file with the extension <code>.drawio</code></li>
+<li>Replaces the found <code>img</code> tags with <code>mxgraph</code> HTML block (actual drawio file content). For more details, please have a look at the <a href="https://www.drawio.com/doc/faq/embed-html">official drawio.com documentation</a>.</li>
+</ol>
+<p>By default this plugin uses the <a href="https://github.com/jgraph/drawio/blob/dev/src/main/webapp/js/viewer-static.min.js">GraphViewer</a> minified version.</p>
+<p>This is a standalone viewer for drawio diagrams that can be embedded in any web page to convert mxGraph XML to SVG. It features a lightbox mode and a toolbar with buttons to zoom, edit, and navigate the diagram.</p></section></section>
+<section class="print-page md-section" heading-number="2" id="section-2">
+<h1>Examples<a class="headerlink" href="#section-2" title="Permanent link"></a>
+</h1>
+<section class="print-page" heading-number="2.1" id="tests-simple-diagram"><h1 id="tests-simple-diagram-simple-diagram">Simple diagram</h1>
+<h2 id="tests-simple-diagram-example">Example</h2>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"65bd71144e\"&gt;\n    &lt;diagram id=\"sWgCjdYztQFh1ezxrF-R\" name=\"Page-1\"&gt;\n        &lt;mxGraphModel dx=\"949\" dy=\"439\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"2\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"3\" value=\"\" style=\"endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"2\" target=\"4\" edge=\"1\"&gt;\n                    &lt;mxGeometry width=\"50\" height=\"50\" relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"320\" y=\"160\" as=\"sourcePoint\"/&gt;\n                        &lt;mxPoint x=\"380\" y=\"140\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"4\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"5\" value=\"\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" vertex=\"1\" parent=\"1\"&gt;\n                    &lt;mxGeometry x=\"390\" y=\"260\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"6\" value=\"\" style=\"triangle;whiteSpace=wrap;html=1;\" vertex=\"1\" parent=\"1\"&gt;\n                    &lt;mxGeometry x=\"200\" y=\"270\" width=\"60\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<h2 id="tests-simple-diagram-markdown">Markdown</h2>
+<div class="highlight"><pre><span></span><code>![](test.drawio)
+</code></pre></div></section><section class="print-page" heading-number="2.2" id="tests-error-handling"><h1 id="tests-error-handling-error-handling">Error Handling</h1>
+<p>In the following case the diagram is not valid should show an error message <code>Not a diagram file</code>.</p>
+<h2 id="tests-error-handling-example">Example</h2>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": ""}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<p>Additionnaly, you should see a warning in your MkDocs server similar to:</p>
+<div class="highlight"><pre><span></span><code>WARNING<span class="w"> </span>-<span class="w">  </span>Warning:<span class="w"> </span>Found<span class="w"> </span><span class="m">0</span><span class="w"> </span>results<span class="w"> </span><span class="k">for</span><span class="w"> </span>page<span class="w"> </span>name<span class="w"> </span><span class="s1">'test diagram'</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>diagram<span class="w"> </span><span class="s1">'test.drawio'</span><span class="w"> </span>on<span class="w"> </span>path<span class="w"> </span><span class="s1">'/tmp/mkdocs_ce1qjhyn/test2'</span>
+ERROR<span class="w">   </span>-<span class="w">  </span>Error:<span class="w"> </span>Provided<span class="w"> </span>diagram<span class="w"> </span>file<span class="w"> </span><span class="s1">'test.drawio'</span><span class="w"> </span>on<span class="w"> </span>path<span class="w"> </span><span class="s1">'/tmp/mkdocs_ce1qjhyn/test5'</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>a<span class="w"> </span>valid<span class="w"> </span>diagram
+</code></pre></div>
+<h2 id="tests-error-handling-markdown">Markdown</h2>
+<div class="highlight"><pre><span></span><code>![](test.drawio)
+</code></pre></div></section><section class="print-page" heading-number="2.3" id="tests-configuration"><h1 id="tests-configuration-test-config-settings">Test config settings</h1>
+<p>You should be able to use the <code>tooltips: true|false</code> config flag in your <code>mkdocs.yml</code> to control if tooltips should be shown or not:
+<div class="mxgraph" data-mxgraph="{&quot;toolbar&quot;: &quot;zoom&quot;, &quot;tooltips&quot;: &quot;1&quot;, &quot;border&quot;: 25, &quot;resize&quot;: &quot;1&quot;, &quot;edit&quot;: &quot;_blank&quot;, &quot;highlight&quot;: &quot;#0000FF&quot;, &quot;xml&quot;: &quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; agent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36\&quot; version=\&quot;24.7.7\&quot;&gt;\n  &lt;diagram id=\&quot;sWgCjdYztQFh1ezxrF-R\&quot; name=\&quot;Page-1\&quot;&gt;\n    &lt;mxGraphModel dx=\&quot;963\&quot; dy=\&quot;1401\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;827\&quot; pageHeight=\&quot;1169\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\&quot;0\&quot;/&gt;\n        &lt;mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot;/&gt;\n        &lt;mxCell id=\&quot;2\&quot; value=\&quot;a\&quot; style=\&quot;whiteSpace=wrap;html=1;aspect=fixed;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;80\&quot; y=\&quot;60\&quot; width=\&quot;80\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot;/&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;3\&quot; value=\&quot;\&quot; style=\&quot;endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\&quot; parent=\&quot;1\&quot; source=\&quot;2\&quot; target=\&quot;4\&quot; edge=\&quot;1\&quot;&gt;\n          &lt;mxGeometry width=\&quot;50\&quot; height=\&quot;50\&quot; relative=\&quot;1\&quot; as=\&quot;geometry\&quot;&gt;\n            &lt;mxPoint x=\&quot;320\&quot; y=\&quot;160\&quot; as=\&quot;sourcePoint\&quot;/&gt;\n            &lt;mxPoint x=\&quot;380\&quot; y=\&quot;140\&quot; as=\&quot;targetPoint\&quot;/&gt;\n          &lt;/mxGeometry&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;4\&quot; value=\&quot;c\&quot; style=\&quot;ellipse;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;310\&quot; y=\&quot;60\&quot; width=\&quot;120\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot;/&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;5\&quot; value=\&quot;\&quot; style=\&quot;whiteSpace=wrap;html=1;aspect=fixed;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;360\&quot; y=\&quot;250\&quot; width=\&quot;80\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot;/&gt;\n        &lt;/mxCell&gt;\n        &lt;mxCell id=\&quot;6\&quot; value=\&quot;\&quot; style=\&quot;triangle;whiteSpace=wrap;html=1;\&quot; parent=\&quot;1\&quot; vertex=\&quot;1\&quot;&gt;\n          &lt;mxGeometry x=\&quot;110\&quot; y=\&quot;250\&quot; width=\&quot;60\&quot; height=\&quot;80\&quot; as=\&quot;geometry\&quot;/&gt;\n        &lt;/mxCell&gt;\n        &lt;UserObject label=\&quot;Hover over me.\&quot; tooltip=\&quot;Hello I'm a tooltip.\&quot; id=\&quot;cVhbZjsc7NjAtHNjXZGz-8\&quot;&gt;\n          &lt;mxCell style=\&quot;text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\&quot; vertex=\&quot;1\&quot; parent=\&quot;1\&quot;&gt;\n            &lt;mxGeometry x=\&quot;210\&quot; y=\&quot;190\&quot; width=\&quot;110\&quot; height=\&quot;30\&quot; as=\&quot;geometry\&quot;/&gt;\n          &lt;/mxCell&gt;\n        &lt;/UserObject&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;&quot;}" style="max-width:100%;border:1px solid transparent;"></div></p>
+<p>You should be able to see a mathematical expressions properly rendered:
+<div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"app.diagrams.net\" agent=\"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36\" version=\"24.7.7\"&gt;\n  &lt;diagram id=\"sWgCjdYztQFh1ezxrF-R\" name=\"Page-1\"&gt;\n    &lt;mxGraphModel dx=\"963\" dy=\"1401\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"1\" shadow=\"0\"&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\"0\"/&gt;\n        &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n        &lt;mxCell id=\"cVhbZjsc7NjAtHNjXZGz-10\" value=\"&amp;lt;span style=&amp;quot;color: rgb(232, 62, 140); font-family: SFMono-Regular, Menlo, Monaco, Consolas, &amp;amp;quot;Liberation Mono&amp;amp;quot;, &amp;amp;quot;Courier New&amp;amp;quot;, monospace; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&amp;quot;&amp;gt;LaTeX \\(\\sqrt{3\u00d7-1}+(1+x)^2\\) and AsciiMath `a^b + b^2 = c^2`&amp;lt;/span&amp;gt;\" style=\"text;whiteSpace=wrap;html=1;\" vertex=\"1\" parent=\"1\"&gt;\n          &lt;mxGeometry x=\"110\" y=\"100\" width=\"210\" height=\"50\" as=\"geometry\"/&gt;\n        &lt;/mxCell&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<p>You should be able to use the <code>edit: true|false</code> config flag in your 'mkdocs.yml' to control if the edit button will be shown in the lightbox view of your diagrams.</p></section><section class="print-page" heading-number="2.4" id="tests-code-blocks"><h1 id="tests-code-blocks-code-blocks">Code Blocks</h1>
+<p>Diagrams are not rendered in code blocks.</p>
+<h2 id="tests-code-blocks-example">Example</h2>
+<div class="highlight"><pre><span></span><code>![<span class="nt">test diagram</span>](<span class="na">test.drawio</span>)
+</code></pre></div>
+<h2 id="tests-code-blocks-markdown">Markdown</h2>
+<div class="highlight"><pre><span></span><code> ```markdown
+ ![test diagram](test.drawio)
+ ```
+</code></pre></div></section><section class="print-page" heading-number="2.5" id="tests-relative-paths"><h1 id="tests-relative-paths-relative-path-to-diagram-within-indexmd">Relative path to diagram within index.md</h1>
+<h2 id="tests-relative-paths-example">Example</h2>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"65bd71144e\"&gt;\n    &lt;diagram id=\"sWgCjdYztQFh1ezxrF-R\" name=\"Page-1\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"2\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"3\" value=\"\" style=\"endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"2\" target=\"4\" edge=\"1\"&gt;\n                    &lt;mxGeometry width=\"50\" height=\"50\" relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"320\" y=\"160\" as=\"sourcePoint\"/&gt;\n                        &lt;mxPoint x=\"380\" y=\"140\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"4\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"5\" value=\"\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"390\" y=\"260\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"6\" value=\"\" style=\"triangle;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"200\" y=\"270\" width=\"60\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"7\" value=\"Diagram from assets directory\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" vertex=\"1\" parent=\"1\"&gt;\n                    &lt;mxGeometry x=\"180\" y=\"195\" width=\"180\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<h2 id="tests-relative-paths-markdown">Markdown</h2>
+<div class="highlight"><pre><span></span><code>![](../assets/test.drawio)
+</code></pre></div></section><section class="print-page" heading-number="2.6" id="tests-relative-paths-example"><h1 id="tests-relative-paths-example-relative-path-to-diagram-within-examplemd">Relative path to diagram within example.md</h1>
+<h2 id="tests-relative-paths-example-example">Example</h2>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"65bd71144e\"&gt;\n    &lt;diagram id=\"sWgCjdYztQFh1ezxrF-R\" name=\"Page-1\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"2\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"3\" value=\"\" style=\"endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"2\" target=\"4\" edge=\"1\"&gt;\n                    &lt;mxGeometry width=\"50\" height=\"50\" relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"320\" y=\"160\" as=\"sourcePoint\"/&gt;\n                        &lt;mxPoint x=\"380\" y=\"140\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"4\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"5\" value=\"\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"390\" y=\"260\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"6\" value=\"\" style=\"triangle;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"200\" y=\"270\" width=\"60\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"7\" value=\"Diagram from assets directory\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" vertex=\"1\" parent=\"1\"&gt;\n                    &lt;mxGeometry x=\"180\" y=\"195\" width=\"180\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<h2 id="tests-relative-paths-example-markdown">Markdown</h2>
+<div class="highlight"><pre><span></span><code>![](../assets/test.drawio)
+</code></pre></div></section><section class="print-page" heading-number="2.7" id="tests-pagging"><h1 id="tests-pagging-pagging">Pagging</h1>
+<p>You can either use the <code>alt</code> text of the image for pagging or use an attribute
+page for pagging if you have the <code>attr_list</code> markdown extension installed in 
+your <code>mkdocs.yaml</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">attr_list</span>
+</code></pre></div>
+<h2 id="tests-pagging-examples">Examples</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="tests-pagging-__tabbed_1_1" name="tests-pagging-__tabbed_1" type="radio"><input id="tests-pagging-__tabbed_1_2" name="tests-pagging-__tabbed_1" type="radio"><div class="tabbed-labels"><label for="tests-pagging-__tabbed_1_1">Diagram</label><label for="tests-pagging-__tabbed_1_2">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Below you should see diagram Page-1:
+<div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"65bd71144e\"&gt;&lt;diagram id=\"sWgCjdYztQFh1ezxrF-R\" name=\"Page-1\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"2\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"3\" value=\"\" style=\"endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"2\" target=\"4\" edge=\"1\"&gt;\n                    &lt;mxGeometry width=\"50\" height=\"50\" relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"320\" y=\"160\" as=\"sourcePoint\"/&gt;\n                        &lt;mxPoint x=\"380\" y=\"140\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"4\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"jEQN0c8lupLUuRs0BYHV-4\" value=\"Page-1\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"210\" y=\"30\" width=\"60\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n    &lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>![<span class="nt">Page-1</span>](<span class="na">test.drawio</span>)
+</code></pre></div>
+</div>
+</div>
+</input></input></div>
+<hr/>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="tests-pagging-__tabbed_2_1" name="tests-pagging-__tabbed_2" type="radio"><input id="tests-pagging-__tabbed_2_2" name="tests-pagging-__tabbed_2" type="radio"><div class="tabbed-labels"><label for="tests-pagging-__tabbed_2_1">Diagram</label><label for="tests-pagging-__tabbed_2_2">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Below you should see diagram Page-2:
+<div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"65bd71144e\"&gt;&lt;diagram id=\"wlfak2Qh67BLjky1jg1P\" name=\"Page-2\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-5\" style=\"edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"Xq97M8SX7CFenNwQ6utj-1\" target=\"Xq97M8SX7CFenNwQ6utj-6\" edge=\"1\"&gt;\n                    &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"220\" y=\"200\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-1\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-3\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-4\" value=\"Page-2\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"210\" y=\"30\" width=\"60\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-7\" value=\"\" style=\"edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"1\" source=\"Xq97M8SX7CFenNwQ6utj-6\" target=\"Xq97M8SX7CFenNwQ6utj-3\" edge=\"1\"&gt;\n                    &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-6\" value=\"b\" style=\"rhombus;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"200\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>![<span class="nt">Page-2</span>](<span class="na">test.drawio</span>)
+</code></pre></div>
+</div>
+</div>
+</input></input></div>
+<hr/>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="tests-pagging-__tabbed_3_1" name="tests-pagging-__tabbed_3" type="radio"><input id="tests-pagging-__tabbed_3_2" name="tests-pagging-__tabbed_3" type="radio"><div class="tabbed-labels"><label for="tests-pagging-__tabbed_3_1">Diagram</label><label for="tests-pagging-__tabbed_3_2">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Below you should see the diagram Page-2 using the page attribute:
+<div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"65bd71144e\"&gt;&lt;diagram id=\"wlfak2Qh67BLjky1jg1P\" name=\"Page-2\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-5\" style=\"edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"Xq97M8SX7CFenNwQ6utj-1\" target=\"Xq97M8SX7CFenNwQ6utj-6\" edge=\"1\"&gt;\n                    &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"220\" y=\"200\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-1\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-3\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-4\" value=\"Page-2\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"210\" y=\"30\" width=\"60\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-7\" value=\"\" style=\"edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"1\" source=\"Xq97M8SX7CFenNwQ6utj-6\" target=\"Xq97M8SX7CFenNwQ6utj-3\" edge=\"1\"&gt;\n                    &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-6\" value=\"b\" style=\"rhombus;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"200\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>![<span class="nt">Some alt text</span>](<span class="na">test.drawio</span>){ page="Page-2" }
+</code></pre></div>
+</div>
+</div>
+</input></input></div>
+<hr/>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="tests-pagging-__tabbed_4_1" name="tests-pagging-__tabbed_4" type="radio"><input id="tests-pagging-__tabbed_4_2" name="tests-pagging-__tabbed_4" type="radio"/><div class="tabbed-labels"><label for="tests-pagging-__tabbed_4_1">Diagram</label><label for="tests-pagging-__tabbed_4_2">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>If the alt text doesn't exist as a page it will fallback to the first page of your diagram.
+Below you should therefore see Page-1 (default):
+<div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"65bd71144e\"&gt;\n    &lt;diagram id=\"sWgCjdYztQFh1ezxrF-R\" name=\"Page-1\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"2\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"3\" value=\"\" style=\"endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"2\" target=\"4\" edge=\"1\"&gt;\n                    &lt;mxGeometry width=\"50\" height=\"50\" relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"320\" y=\"160\" as=\"sourcePoint\"/&gt;\n                        &lt;mxPoint x=\"380\" y=\"140\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"4\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"jEQN0c8lupLUuRs0BYHV-4\" value=\"Page-1\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"210\" y=\"30\" width=\"60\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n    &lt;diagram id=\"wlfak2Qh67BLjky1jg1P\" name=\"Page-2\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-5\" style=\"edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"Xq97M8SX7CFenNwQ6utj-1\" target=\"Xq97M8SX7CFenNwQ6utj-6\" edge=\"1\"&gt;\n                    &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"220\" y=\"200\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-1\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-3\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-4\" value=\"Page-2\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"210\" y=\"30\" width=\"60\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-7\" value=\"\" style=\"edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"1\" source=\"Xq97M8SX7CFenNwQ6utj-6\" target=\"Xq97M8SX7CFenNwQ6utj-3\" edge=\"1\"&gt;\n                    &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-6\" value=\"b\" style=\"rhombus;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"200\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<p>Furthoremore, you should see a warning in your mkdocs server similar to:</p>
+<div class="highlight"><pre><span></span><code>WARNING<span class="w"> </span>-<span class="w">  </span>Warning:<span class="w"> </span>Found<span class="w"> </span><span class="m">0</span><span class="w"> </span>results<span class="w"> </span><span class="k">for</span><span class="w"> </span>page<span class="w"> </span>name<span class="w"> </span><span class="s1">'Page-3'</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>diagram<span class="w"> </span><span class="s1">'test.drawio'</span><span class="w"> </span>on<span class="w"> </span>path<span class="w"> </span><span class="s1">'/tmp/mkdocs_ce1qjhyn/test2'</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>![<span class="nt">Page-3</span>](<span class="na">test.drawio</span>)
+</code></pre></div>
+</div>
+</div>
+</input></div>
+<hr/>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="tests-pagging-__tabbed_5_1" name="tests-pagging-__tabbed_5" type="radio"/><input id="tests-pagging-__tabbed_5_2" name="tests-pagging-__tabbed_5" type="radio"/><div class="tabbed-labels"><label for="tests-pagging-__tabbed_5_1">Diagram</label><label for="tests-pagging-__tabbed_5_2">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>If the alt text and page attribute don't exist as a page, it will fallback to the first page of your diagram.
+Below you should therefore see Page-1 (default):
+<div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"65bd71144e\"&gt;\n    &lt;diagram id=\"sWgCjdYztQFh1ezxrF-R\" name=\"Page-1\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"2\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"3\" value=\"\" style=\"endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"2\" target=\"4\" edge=\"1\"&gt;\n                    &lt;mxGeometry width=\"50\" height=\"50\" relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"320\" y=\"160\" as=\"sourcePoint\"/&gt;\n                        &lt;mxPoint x=\"380\" y=\"140\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"4\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"jEQN0c8lupLUuRs0BYHV-4\" value=\"Page-1\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"210\" y=\"30\" width=\"60\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n    &lt;diagram id=\"wlfak2Qh67BLjky1jg1P\" name=\"Page-2\"&gt;\n        &lt;mxGraphModel dx=\"652\" dy=\"480\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"&gt;\n            &lt;root&gt;\n                &lt;mxCell id=\"0\"/&gt;\n                &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-5\" style=\"edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" parent=\"1\" source=\"Xq97M8SX7CFenNwQ6utj-1\" target=\"Xq97M8SX7CFenNwQ6utj-6\" edge=\"1\"&gt;\n                    &lt;mxGeometry relative=\"1\" as=\"geometry\"&gt;\n                        &lt;mxPoint x=\"220\" y=\"200\" as=\"targetPoint\"/&gt;\n                    &lt;/mxGeometry&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-1\" value=\"a\" style=\"whiteSpace=wrap;html=1;aspect=fixed;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"80\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-3\" value=\"c\" style=\"ellipse;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"310\" y=\"60\" width=\"120\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-4\" value=\"Page-2\" style=\"text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"210\" y=\"30\" width=\"60\" height=\"30\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-7\" value=\"\" style=\"edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;\" parent=\"1\" source=\"Xq97M8SX7CFenNwQ6utj-6\" target=\"Xq97M8SX7CFenNwQ6utj-3\" edge=\"1\"&gt;\n                    &lt;mxGeometry relative=\"1\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n                &lt;mxCell id=\"Xq97M8SX7CFenNwQ6utj-6\" value=\"b\" style=\"rhombus;whiteSpace=wrap;html=1;\" parent=\"1\" vertex=\"1\"&gt;\n                    &lt;mxGeometry x=\"200\" y=\"60\" width=\"80\" height=\"80\" as=\"geometry\"/&gt;\n                &lt;/mxCell&gt;\n            &lt;/root&gt;\n        &lt;/mxGraphModel&gt;\n    &lt;/diagram&gt;\n&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<p>Furthoremore, you should see a warning in your mkdocs server similar to:</p>
+<div class="highlight"><pre><span></span><code>WARNING<span class="w"> </span>-<span class="w">  </span>Warning:<span class="w"> </span>Found<span class="w"> </span><span class="m">0</span><span class="w"> </span>results<span class="w"> </span><span class="k">for</span><span class="w"> </span>page<span class="w"> </span>name<span class="w"> </span><span class="s1">'Page-3'</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>diagram<span class="w"> </span><span class="s1">'test.drawio'</span><span class="w"> </span>on<span class="w"> </span>path<span class="w"> </span><span class="s1">'/tmp/mkdocs_ce1qjhyn/test2'</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>![<span class="nt">Some alt text</span>](<span class="na">test.drawio</span>){ page="Page-3" }
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr/>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="tests-pagging-__tabbed_6_1" name="tests-pagging-__tabbed_6" type="radio"/><input id="tests-pagging-__tabbed_6_2" name="tests-pagging-__tabbed_6" type="radio"/><div class="tabbed-labels"><label for="tests-pagging-__tabbed_6_1">Diagram</label><label for="tests-pagging-__tabbed_6_2">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Pagging logic for SVG diagrams is skip as only a single page can be exported as an SVG drawio diagram.</p>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;!-- Do not edit this file with editors other than draw.io --&gt;&lt;!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"&gt;\n&lt;svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"background: transparent; background-color: transparent; color-scheme: light dark;\" version=\"1.1\" width=\"391px\" height=\"291px\" viewBox=\"-0.5 -0.5 391 291\" content=\"&amp;lt;mxfile host=&amp;quot;app.diagrams.net&amp;quot; agent=&amp;quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36&amp;quot; version=&amp;quot;27.0.8&amp;quot;&amp;gt;&amp;#10;  &amp;lt;diagram id=&amp;quot;sWgCjdYztQFh1ezxrF-R&amp;quot; name=&amp;quot;Page-1&amp;quot;&amp;gt;&amp;#10;    &amp;lt;mxGraphModel dx=&amp;quot;1202&amp;quot; dy=&amp;quot;1092&amp;quot; grid=&amp;quot;1&amp;quot; gridSize=&amp;quot;10&amp;quot; guides=&amp;quot;1&amp;quot; tooltips=&amp;quot;1&amp;quot; connect=&amp;quot;1&amp;quot; arrows=&amp;quot;1&amp;quot; fold=&amp;quot;1&amp;quot; page=&amp;quot;1&amp;quot; pageScale=&amp;quot;1&amp;quot; pageWidth=&amp;quot;827&amp;quot; pageHeight=&amp;quot;1169&amp;quot; math=&amp;quot;0&amp;quot; shadow=&amp;quot;0&amp;quot;&amp;gt;&amp;#10;      &amp;lt;root&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;0&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;1&amp;quot; parent=&amp;quot;0&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;2&amp;quot; value=&amp;quot;a&amp;quot; style=&amp;quot;whiteSpace=wrap;html=1;aspect=fixed;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;80&amp;quot; y=&amp;quot;60&amp;quot; width=&amp;quot;80&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;3&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;&amp;quot; parent=&amp;quot;1&amp;quot; source=&amp;quot;2&amp;quot; target=&amp;quot;4&amp;quot; edge=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry width=&amp;quot;50&amp;quot; height=&amp;quot;50&amp;quot; relative=&amp;quot;1&amp;quot; as=&amp;quot;geometry&amp;quot;&amp;gt;&amp;#10;            &amp;lt;mxPoint x=&amp;quot;320&amp;quot; y=&amp;quot;160&amp;quot; as=&amp;quot;sourcePoint&amp;quot; /&amp;gt;&amp;#10;            &amp;lt;mxPoint x=&amp;quot;380&amp;quot; y=&amp;quot;140&amp;quot; as=&amp;quot;targetPoint&amp;quot; /&amp;gt;&amp;#10;          &amp;lt;/mxGeometry&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;4&amp;quot; value=&amp;quot;c&amp;quot; style=&amp;quot;ellipse;whiteSpace=wrap;html=1;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;310&amp;quot; y=&amp;quot;60&amp;quot; width=&amp;quot;120&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;5&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;whiteSpace=wrap;html=1;aspect=fixed;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;390&amp;quot; y=&amp;quot;260&amp;quot; width=&amp;quot;80&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;6&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;triangle;whiteSpace=wrap;html=1;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;200&amp;quot; y=&amp;quot;270&amp;quot; width=&amp;quot;60&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;7&amp;quot; value=&amp;quot;SVG based Drawio Diagram&amp;quot; style=&amp;quot;text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;185&amp;quot; y=&amp;quot;195&amp;quot; width=&amp;quot;170&amp;quot; height=&amp;quot;30&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;      &amp;lt;/root&amp;gt;&amp;#10;    &amp;lt;/mxGraphModel&amp;gt;&amp;#10;  &amp;lt;/diagram&amp;gt;&amp;#10;&amp;lt;/mxfile&amp;gt;&amp;#10;\"&gt;&lt;defs/&gt;&lt;g&gt;&lt;g data-cell-id=\"0\"&gt;&lt;g data-cell-id=\"1\"&gt;&lt;g data-cell-id=\"2\"&gt;&lt;g&gt;&lt;rect x=\"0\" y=\"0\" width=\"80\" height=\"80\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 40px; margin-left: 1px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; \"&gt;a&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"40\" y=\"44\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;a&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"3\"&gt;&lt;g&gt;&lt;path d=\"M 86.37 40 L 223.63 40\" fill=\"none\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"stroke\" style=\"stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;path d=\"M 81.12 40 L 88.12 36.5 L 86.37 40 L 88.12 43.5 Z\" fill=\"#000000\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;path d=\"M 228.88 40 L 221.88 43.5 L 223.63 40 L 221.88 36.5 Z\" fill=\"#000000\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"4\"&gt;&lt;g&gt;&lt;ellipse cx=\"290\" cy=\"40\" rx=\"60\" ry=\"40\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 40px; margin-left: 231px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; \"&gt;c&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"290\" y=\"44\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;c&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"5\"&gt;&lt;g&gt;&lt;rect x=\"310\" y=\"200\" width=\"80\" height=\"80\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"6\"&gt;&lt;g&gt;&lt;path d=\"M 120 210 L 180 250 L 120 290 Z\" fill=\"#ffffff\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"7\"&gt;&lt;g&gt;&lt;rect x=\"105\" y=\"135\" width=\"170\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 150px; margin-left: 190px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; \"&gt;SVG based Drawio Diagram&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"190\" y=\"154\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;SVG based Drawio Diagram&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;switch&gt;&lt;g requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"/&gt;&lt;a transform=\"translate(0,-5)\" xlink:href=\"https://www.drawio.com/doc/faq/svg-export-text-problems\" target=\"_blank\"&gt;&lt;text text-anchor=\"middle\" font-size=\"10px\" x=\"50%\" y=\"100%\"&gt;Text is not SVG - cannot display&lt;/text&gt;&lt;/a&gt;&lt;/switch&gt;&lt;/svg&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>![<span class="nt">Some alt text</span>](<span class="na">test.drawio.svg</span>){ page="Page-3" }
+</code></pre></div>
+</div>
+</div>
+</div></section><section class="print-page" heading-number="2.8" id="tests-external-url"><h1 id="tests-external-url-external-url">External URL</h1>
+<h2 id="tests-external-url-example">Example</h2>
+<p>This is an example of an external URL taken from jgraph:</p>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;!-- Do not edit this file with editors other than draw.io --&gt;&lt;!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"&gt;\n&lt;svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"background: transparent; background-color: transparent; color-scheme: light dark;\" version=\"1.1\" width=\"391px\" height=\"291px\" viewBox=\"-0.5 -0.5 391 291\" content=\"&amp;lt;mxfile host=&amp;quot;app.diagrams.net&amp;quot; agent=&amp;quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36&amp;quot; version=&amp;quot;27.0.8&amp;quot;&amp;gt;&amp;#10;  &amp;lt;diagram id=&amp;quot;sWgCjdYztQFh1ezxrF-R&amp;quot; name=&amp;quot;Page-1&amp;quot;&amp;gt;&amp;#10;    &amp;lt;mxGraphModel dx=&amp;quot;1202&amp;quot; dy=&amp;quot;1092&amp;quot; grid=&amp;quot;1&amp;quot; gridSize=&amp;quot;10&amp;quot; guides=&amp;quot;1&amp;quot; tooltips=&amp;quot;1&amp;quot; connect=&amp;quot;1&amp;quot; arrows=&amp;quot;1&amp;quot; fold=&amp;quot;1&amp;quot; page=&amp;quot;1&amp;quot; pageScale=&amp;quot;1&amp;quot; pageWidth=&amp;quot;827&amp;quot; pageHeight=&amp;quot;1169&amp;quot; math=&amp;quot;0&amp;quot; shadow=&amp;quot;0&amp;quot;&amp;gt;&amp;#10;      &amp;lt;root&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;0&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;1&amp;quot; parent=&amp;quot;0&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;2&amp;quot; value=&amp;quot;a&amp;quot; style=&amp;quot;whiteSpace=wrap;html=1;aspect=fixed;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;80&amp;quot; y=&amp;quot;60&amp;quot; width=&amp;quot;80&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;3&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;&amp;quot; parent=&amp;quot;1&amp;quot; source=&amp;quot;2&amp;quot; target=&amp;quot;4&amp;quot; edge=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry width=&amp;quot;50&amp;quot; height=&amp;quot;50&amp;quot; relative=&amp;quot;1&amp;quot; as=&amp;quot;geometry&amp;quot;&amp;gt;&amp;#10;            &amp;lt;mxPoint x=&amp;quot;320&amp;quot; y=&amp;quot;160&amp;quot; as=&amp;quot;sourcePoint&amp;quot; /&amp;gt;&amp;#10;            &amp;lt;mxPoint x=&amp;quot;380&amp;quot; y=&amp;quot;140&amp;quot; as=&amp;quot;targetPoint&amp;quot; /&amp;gt;&amp;#10;          &amp;lt;/mxGeometry&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;4&amp;quot; value=&amp;quot;c&amp;quot; style=&amp;quot;ellipse;whiteSpace=wrap;html=1;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;310&amp;quot; y=&amp;quot;60&amp;quot; width=&amp;quot;120&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;5&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;whiteSpace=wrap;html=1;aspect=fixed;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;390&amp;quot; y=&amp;quot;260&amp;quot; width=&amp;quot;80&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;6&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;triangle;whiteSpace=wrap;html=1;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;200&amp;quot; y=&amp;quot;270&amp;quot; width=&amp;quot;60&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;7&amp;quot; value=&amp;quot;SVG based Drawio Diagram&amp;quot; style=&amp;quot;text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;185&amp;quot; y=&amp;quot;195&amp;quot; width=&amp;quot;170&amp;quot; height=&amp;quot;30&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;      &amp;lt;/root&amp;gt;&amp;#10;    &amp;lt;/mxGraphModel&amp;gt;&amp;#10;  &amp;lt;/diagram&amp;gt;&amp;#10;&amp;lt;/mxfile&amp;gt;&amp;#10;\"&gt;&lt;defs/&gt;&lt;g&gt;&lt;g data-cell-id=\"0\"&gt;&lt;g data-cell-id=\"1\"&gt;&lt;g data-cell-id=\"2\"&gt;&lt;g&gt;&lt;rect x=\"0\" y=\"0\" width=\"80\" height=\"80\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 40px; margin-left: 1px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; \"&gt;a&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"40\" y=\"44\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;a&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"3\"&gt;&lt;g&gt;&lt;path d=\"M 86.37 40 L 223.63 40\" fill=\"none\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"stroke\" style=\"stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;path d=\"M 81.12 40 L 88.12 36.5 L 86.37 40 L 88.12 43.5 Z\" fill=\"#000000\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;path d=\"M 228.88 40 L 221.88 43.5 L 223.63 40 L 221.88 36.5 Z\" fill=\"#000000\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"4\"&gt;&lt;g&gt;&lt;ellipse cx=\"290\" cy=\"40\" rx=\"60\" ry=\"40\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 40px; margin-left: 231px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; \"&gt;c&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"290\" y=\"44\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;c&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"5\"&gt;&lt;g&gt;&lt;rect x=\"310\" y=\"200\" width=\"80\" height=\"80\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"6\"&gt;&lt;g&gt;&lt;path d=\"M 120 210 L 180 250 L 120 290 Z\" fill=\"#ffffff\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"7\"&gt;&lt;g&gt;&lt;rect x=\"105\" y=\"135\" width=\"170\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 150px; margin-left: 190px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; \"&gt;SVG based Drawio Diagram&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"190\" y=\"154\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;SVG based Drawio Diagram&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;switch&gt;&lt;g requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"/&gt;&lt;a transform=\"translate(0,-5)\" xlink:href=\"https://www.drawio.com/doc/faq/svg-export-text-problems\" target=\"_blank\"&gt;&lt;text text-anchor=\"middle\" font-size=\"10px\" x=\"50%\" y=\"100%\"&gt;Text is not SVG - cannot display&lt;/text&gt;&lt;/a&gt;&lt;/switch&gt;&lt;/svg&gt;", "url": "https://raw.githubusercontent.com/jgraph/drawio-diagrams/dev/examples/gemfile-dependency-graph.drawio"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<h2 id="tests-external-url-markdown">Markdown</h2>
+<div class="highlight"><pre><span></span><code>![](https://raw.githubusercontent.com/jgraph/drawio-diagrams/dev/examples/gemfile-dependency-graph.drawio)
+</code></pre></div></section><section class="print-page" heading-number="2.9" id="tests-svg"><h1 id="tests-svg-svg-diagram">SVG diagram</h1>
+<h2 id="tests-svg-example">Example</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="tests-svg-__tabbed_1_1" name="tests-svg-__tabbed_1" type="radio"/><div class="tabbed-labels"><label for="tests-svg-__tabbed_1_1">Diagram</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<p>The following is a SVG based drawio diagram:</p>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;!-- Do not edit this file with editors other than draw.io --&gt;&lt;!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\"&gt;\n&lt;svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"background: transparent; background-color: transparent; color-scheme: light dark;\" version=\"1.1\" width=\"391px\" height=\"291px\" viewBox=\"-0.5 -0.5 391 291\" content=\"&amp;lt;mxfile host=&amp;quot;app.diagrams.net&amp;quot; agent=&amp;quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36&amp;quot; version=&amp;quot;27.0.8&amp;quot;&amp;gt;&amp;#10;  &amp;lt;diagram id=&amp;quot;sWgCjdYztQFh1ezxrF-R&amp;quot; name=&amp;quot;Page-1&amp;quot;&amp;gt;&amp;#10;    &amp;lt;mxGraphModel dx=&amp;quot;1202&amp;quot; dy=&amp;quot;1092&amp;quot; grid=&amp;quot;1&amp;quot; gridSize=&amp;quot;10&amp;quot; guides=&amp;quot;1&amp;quot; tooltips=&amp;quot;1&amp;quot; connect=&amp;quot;1&amp;quot; arrows=&amp;quot;1&amp;quot; fold=&amp;quot;1&amp;quot; page=&amp;quot;1&amp;quot; pageScale=&amp;quot;1&amp;quot; pageWidth=&amp;quot;827&amp;quot; pageHeight=&amp;quot;1169&amp;quot; math=&amp;quot;0&amp;quot; shadow=&amp;quot;0&amp;quot;&amp;gt;&amp;#10;      &amp;lt;root&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;0&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;1&amp;quot; parent=&amp;quot;0&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;2&amp;quot; value=&amp;quot;a&amp;quot; style=&amp;quot;whiteSpace=wrap;html=1;aspect=fixed;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;80&amp;quot; y=&amp;quot;60&amp;quot; width=&amp;quot;80&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;3&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;endArrow=classic;startArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;&amp;quot; parent=&amp;quot;1&amp;quot; source=&amp;quot;2&amp;quot; target=&amp;quot;4&amp;quot; edge=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry width=&amp;quot;50&amp;quot; height=&amp;quot;50&amp;quot; relative=&amp;quot;1&amp;quot; as=&amp;quot;geometry&amp;quot;&amp;gt;&amp;#10;            &amp;lt;mxPoint x=&amp;quot;320&amp;quot; y=&amp;quot;160&amp;quot; as=&amp;quot;sourcePoint&amp;quot; /&amp;gt;&amp;#10;            &amp;lt;mxPoint x=&amp;quot;380&amp;quot; y=&amp;quot;140&amp;quot; as=&amp;quot;targetPoint&amp;quot; /&amp;gt;&amp;#10;          &amp;lt;/mxGeometry&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;4&amp;quot; value=&amp;quot;c&amp;quot; style=&amp;quot;ellipse;whiteSpace=wrap;html=1;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;310&amp;quot; y=&amp;quot;60&amp;quot; width=&amp;quot;120&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;5&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;whiteSpace=wrap;html=1;aspect=fixed;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;390&amp;quot; y=&amp;quot;260&amp;quot; width=&amp;quot;80&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;6&amp;quot; value=&amp;quot;&amp;quot; style=&amp;quot;triangle;whiteSpace=wrap;html=1;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;200&amp;quot; y=&amp;quot;270&amp;quot; width=&amp;quot;60&amp;quot; height=&amp;quot;80&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;        &amp;lt;mxCell id=&amp;quot;7&amp;quot; value=&amp;quot;SVG based Drawio Diagram&amp;quot; style=&amp;quot;text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;&amp;quot; parent=&amp;quot;1&amp;quot; vertex=&amp;quot;1&amp;quot;&amp;gt;&amp;#10;          &amp;lt;mxGeometry x=&amp;quot;185&amp;quot; y=&amp;quot;195&amp;quot; width=&amp;quot;170&amp;quot; height=&amp;quot;30&amp;quot; as=&amp;quot;geometry&amp;quot; /&amp;gt;&amp;#10;        &amp;lt;/mxCell&amp;gt;&amp;#10;      &amp;lt;/root&amp;gt;&amp;#10;    &amp;lt;/mxGraphModel&amp;gt;&amp;#10;  &amp;lt;/diagram&amp;gt;&amp;#10;&amp;lt;/mxfile&amp;gt;&amp;#10;\"&gt;&lt;defs/&gt;&lt;g&gt;&lt;g data-cell-id=\"0\"&gt;&lt;g data-cell-id=\"1\"&gt;&lt;g data-cell-id=\"2\"&gt;&lt;g&gt;&lt;rect x=\"0\" y=\"0\" width=\"80\" height=\"80\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 78px; height: 1px; padding-top: 40px; margin-left: 1px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; \"&gt;a&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"40\" y=\"44\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;a&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"3\"&gt;&lt;g&gt;&lt;path d=\"M 86.37 40 L 223.63 40\" fill=\"none\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"stroke\" style=\"stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;path d=\"M 81.12 40 L 88.12 36.5 L 86.37 40 L 88.12 43.5 Z\" fill=\"#000000\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;path d=\"M 228.88 40 L 221.88 43.5 L 223.63 40 L 221.88 36.5 Z\" fill=\"#000000\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"4\"&gt;&lt;g&gt;&lt;ellipse cx=\"290\" cy=\"40\" rx=\"60\" ry=\"40\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 40px; margin-left: 231px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: normal; word-wrap: normal; \"&gt;c&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"290\" y=\"44\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;c&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"5\"&gt;&lt;g&gt;&lt;rect x=\"310\" y=\"200\" width=\"80\" height=\"80\" fill=\"#ffffff\" stroke=\"#000000\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"6\"&gt;&lt;g&gt;&lt;path d=\"M 120 210 L 180 250 L 120 290 Z\" fill=\"#ffffff\" stroke=\"#000000\" stroke-miterlimit=\"10\" pointer-events=\"all\" style=\"fill: light-dark(#ffffff, var(--ge-dark-color, #121212)); stroke: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));\"/&gt;&lt;/g&gt;&lt;/g&gt;&lt;g data-cell-id=\"7\"&gt;&lt;g&gt;&lt;rect x=\"105\" y=\"135\" width=\"170\" height=\"30\" fill=\"none\" stroke=\"none\" pointer-events=\"all\"/&gt;&lt;/g&gt;&lt;g&gt;&lt;g transform=\"translate(-0.5 -0.5)\"&gt;&lt;switch&gt;&lt;foreignObject style=\"overflow: visible; text-align: left;\" pointer-events=\"none\" width=\"100%\" height=\"100%\" requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"&gt;&lt;div xmlns=\"http://www.w3.org/1999/xhtml\" style=\"display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 150px; margin-left: 190px;\"&gt;&lt;div style=\"box-sizing: border-box; font-size: 0; text-align: center; color: #000000; \"&gt;&lt;div style=\"display: inline-block; font-size: 12px; font-family: &amp;quot;Helvetica&amp;quot;; color: light-dark(#000000, #ffffff); line-height: 1.2; pointer-events: all; white-space: nowrap; \"&gt;SVG based Drawio Diagram&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/foreignObject&gt;&lt;text x=\"190\" y=\"154\" fill=\"light-dark(#000000, #ffffff)\" font-family=\"&amp;quot;Helvetica&amp;quot;\" font-size=\"12px\" text-anchor=\"middle\"&gt;SVG based Drawio Diagram&lt;/text&gt;&lt;/switch&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;/g&gt;&lt;switch&gt;&lt;g requiredFeatures=\"http://www.w3.org/TR/SVG11/feature#Extensibility\"/&gt;&lt;a transform=\"translate(0,-5)\" xlink:href=\"https://www.drawio.com/doc/faq/svg-export-text-problems\" target=\"_blank\"&gt;&lt;text text-anchor=\"middle\" font-size=\"10px\" x=\"50%\" y=\"100%\"&gt;Text is not SVG - cannot display&lt;/text&gt;&lt;/a&gt;&lt;/switch&gt;&lt;/svg&gt;", "url": "https://raw.githubusercontent.com/jgraph/drawio-diagrams/dev/examples/gemfile-dependency-graph.drawio"}' style="max-width:100%;border:1px solid transparent;"></div></p>
+<p>You can open the diagram as an SVG in your browser. <a href="../tests/svg/test.drawio.svg">Click here.</a></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="tests-svg-__tabbed_2_1" name="tests-svg-__tabbed_2" type="radio"/><div class="tabbed-labels"><label for="tests-svg-__tabbed_2_1">Markdown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code>![](test.drawio.svg)
+</code></pre></div></section><section class="print-page" heading-number="2.10" id="tests-hyperlinks"><h1 id="tests-hyperlinks-hyperlinks">Hyperlinks</h1>
+<h2 id="tests-hyperlinks-example">Example</h2>
+<p>This is an example of a drawing that has a hyperlink on one of the symbols. It should highlight on mouse hover over with the color set by the <code>highlight</code> configuration setting.</p>
+<p><div class="mxgraph" data-mxgraph='{"toolbar": "zoom", "tooltips": "1", "border": 25, "resize": "1", "edit": "_blank", "highlight": "#0000FF", "xml": "&lt;mxfile host=\"Electron\" agent=\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.5 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36\" version=\"28.2.5\"&gt;\n  &lt;diagram name=\"Page-1\" id=\"oQSh-LxvRU6CrudPoFx3\"&gt;\n    &lt;mxGraphModel dx=\"1042\" dy=\"626\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"850\" pageHeight=\"1100\" math=\"0\" shadow=\"0\"&gt;\n      &lt;root&gt;\n        &lt;mxCell id=\"0\"/&gt;\n        &lt;mxCell id=\"1\" parent=\"0\"/&gt;\n        &lt;UserObject label=\"I have a link!\" link=\"https://github.com/tuunit/mkdocs-drawio\" id=\"MJqBkFlVLDPoP-BwWEq9-1\"&gt;\n          &lt;mxCell style=\"rounded=0;whiteSpace=wrap;html=1;\" vertex=\"1\" parent=\"1\"&gt;\n            &lt;mxGeometry x=\"365\" y=\"210\" width=\"120\" height=\"60\" as=\"geometry\"/&gt;\n          &lt;/mxCell&gt;\n        &lt;/UserObject&gt;\n      &lt;/root&gt;\n    &lt;/mxGraphModel&gt;\n  &lt;/diagram&gt;\n&lt;/mxfile&gt;", "url": "https://raw.githubusercontent.com/jgraph/drawio-diagrams/dev/examples/gemfile-dependency-graph.drawio"}' style="max-width:100%;border:1px solid transparent;"></div></p></section></section></div><style>.print-site-enumerate-headings #section-1 > h1:before { content: '1 ' }
+.print-site-enumerate-headings #index > h1:before { content: '1.1 ' }
+
+                .print-site-enumerate-headings #index h2:before { content: '1.1.' counter(counter-index-2) ' ' }
+                .print-site-enumerate-headings #index h2 {  counter-increment: counter-index-2 }
+            
+.print-site-enumerate-headings #configuration > h1:before { content: '1.2 ' }
+
+                .print-site-enumerate-headings #configuration h2:before { content: '1.2.' counter(counter-configuration-2) ' ' }
+                .print-site-enumerate-headings #configuration h2 {  counter-increment: counter-configuration-2 }
+            
+.print-site-enumerate-headings #plumbing > h1:before { content: '1.3 ' }
+
+                .print-site-enumerate-headings #plumbing h2:before { content: '1.3.' counter(counter-plumbing-2) ' ' }
+                .print-site-enumerate-headings #plumbing h2 {  counter-increment: counter-plumbing-2 }
+            
+.print-site-enumerate-headings #section-2 > h1:before { content: '2 ' }
+.print-site-enumerate-headings #tests-simple-diagram > h1:before { content: '2.1 ' }
+
+                .print-site-enumerate-headings #tests-simple-diagram h2:before { content: '2.1.' counter(counter-tests-simple-diagram-2) ' ' }
+                .print-site-enumerate-headings #tests-simple-diagram h2 {  counter-increment: counter-tests-simple-diagram-2 }
+            
+.print-site-enumerate-headings #tests-error-handling > h1:before { content: '2.2 ' }
+
+                .print-site-enumerate-headings #tests-error-handling h2:before { content: '2.2.' counter(counter-tests-error-handling-2) ' ' }
+                .print-site-enumerate-headings #tests-error-handling h2 {  counter-increment: counter-tests-error-handling-2 }
+            
+.print-site-enumerate-headings #tests-configuration > h1:before { content: '2.3 ' }
+
+                .print-site-enumerate-headings #tests-configuration h2:before { content: '2.3.' counter(counter-tests-configuration-2) ' ' }
+                .print-site-enumerate-headings #tests-configuration h2 {  counter-increment: counter-tests-configuration-2 }
+            
+.print-site-enumerate-headings #tests-code-blocks > h1:before { content: '2.4 ' }
+
+                .print-site-enumerate-headings #tests-code-blocks h2:before { content: '2.4.' counter(counter-tests-code-blocks-2) ' ' }
+                .print-site-enumerate-headings #tests-code-blocks h2 {  counter-increment: counter-tests-code-blocks-2 }
+            
+.print-site-enumerate-headings #tests-relative-paths > h1:before { content: '2.5 ' }
+
+                .print-site-enumerate-headings #tests-relative-paths h2:before { content: '2.5.' counter(counter-tests-relative-paths-2) ' ' }
+                .print-site-enumerate-headings #tests-relative-paths h2 {  counter-increment: counter-tests-relative-paths-2 }
+            
+.print-site-enumerate-headings #tests-relative-paths-example > h1:before { content: '2.6 ' }
+
+                .print-site-enumerate-headings #tests-relative-paths-example h2:before { content: '2.6.' counter(counter-tests-relative-paths-example-2) ' ' }
+                .print-site-enumerate-headings #tests-relative-paths-example h2 {  counter-increment: counter-tests-relative-paths-example-2 }
+            
+.print-site-enumerate-headings #tests-pagging > h1:before { content: '2.7 ' }
+
+                .print-site-enumerate-headings #tests-pagging h2:before { content: '2.7.' counter(counter-tests-pagging-2) ' ' }
+                .print-site-enumerate-headings #tests-pagging h2 {  counter-increment: counter-tests-pagging-2 }
+            
+.print-site-enumerate-headings #tests-external-url > h1:before { content: '2.8 ' }
+
+                .print-site-enumerate-headings #tests-external-url h2:before { content: '2.8.' counter(counter-tests-external-url-2) ' ' }
+                .print-site-enumerate-headings #tests-external-url h2 {  counter-increment: counter-tests-external-url-2 }
+            
+.print-site-enumerate-headings #tests-svg > h1:before { content: '2.9 ' }
+
+                .print-site-enumerate-headings #tests-svg h2:before { content: '2.9.' counter(counter-tests-svg-2) ' ' }
+                .print-site-enumerate-headings #tests-svg h2 {  counter-increment: counter-tests-svg-2 }
+            
+.print-site-enumerate-headings #tests-hyperlinks > h1:before { content: '2.10 ' }
+
+                .print-site-enumerate-headings #tests-hyperlinks h2:before { content: '2.10.' counter(counter-tests-hyperlinks-2) ' ' }
+                .print-site-enumerate-headings #tests-hyperlinks h2 {  counter-increment: counter-tests-hyperlinks-2 }
+            </style>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "/", "features": ["navigation.instant"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+<script src="../js/print-site.js"></script>
+<script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script>
+<script src="../javascripts/drawio-reload.js"></script>
+<script src="../js/drawio-darkmode.js"></script>
+<script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script></body>
+</html>
