@@ -107,6 +107,29 @@ document$.subscribe(({ body }) => {
 })
 ```
 
+## Using Tabs (pymdownx.tabbed)
+
+If you want to use drawio diagrams inside of tabs you need to make sure that the diagrams are processed after the tabs are rendered. You can achieve this by adding the following javascript to your `mkdocs.yml`:
+
+```yaml
+extra_javascript:
+  - javascripts/drawio-tabs.js
+```
+
+Add `docs/javascripts/drawio-tabs.js` to your project:
+
+```js
+document.addEventListener('change', (event) => {
+  // Check if the target is a pymdownx tab input
+  if (event.target.matches('.tabbed-set > input')) {
+    GraphViewer.processElements()
+  }
+});
+```
+
+Its a bit of a workaround as it listens for all events on the page and retriggers the drawio processing if any tab is clicked.
+
+
 ## How it works
 
 1. mkdocs generates the html per page
