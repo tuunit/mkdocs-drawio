@@ -13,3 +13,11 @@
 [data-bs-theme="dark"] {
   color-scheme: dark;
 }
+
+/* Override drawio's color-scheme 
+  to just inherit from what was set 
+  for the page in the code above */
+.mxgraph, 
+.geDiagramContainer {
+    color-scheme: inherit !important;
+}
