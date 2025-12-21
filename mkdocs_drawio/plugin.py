@@ -151,7 +151,6 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
         if self.config.darkmode:
             self.css.append("css/drawio-darkmode.css")
-            self.js.append("js/drawio-darkmode.js")
 
         for path in self.css:
             config.extra_css.append(str(path))
