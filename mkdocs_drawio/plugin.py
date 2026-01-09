@@ -35,11 +35,14 @@ class Toolbar(base.Config):
     lightbox = c.Type(bool, default=True)
     """ Display the open in lightbox control in the toolbar """
 
-    position = c.Choice(["top", "bottom"], default="top")
+    position = c.Choice(["top", "inline", "bottom"], default="top")
     """ Position of the toolbar """
 
     no_hide = c.Type(bool, default=False)
     """ Whether to hide the toolbar when the mouse is not over it """
+
+    set_title_to_filename = c.Type(bool, default=False)
+    """ Will display the original filename as toolbar title if true, no title if false """
 
 
 class DrawioConfig(base.Config):
@@ -48,12 +51,13 @@ class DrawioConfig(base.Config):
     viewer_js = c.Type(
         str, default="https://viewer.diagrams.net/js/viewer-static.min.js"
     )
-    toolbar = c.Type(Toolbar, default=True)
+    toolbar = c.SubConfig(Toolbar)
     tooltips = c.Type(bool, default=True)
     border = c.Type(int, default=0)
     edit = c.Type(bool, default=True)
     darkmode = c.Type(bool, default=False)
     highlight = c.Type(str, default="")
+    target = c.Choice(["self", "blank"], default="self")
 
 
 class DrawioPlugin(BasePlugin[DrawioConfig]):
@@ -70,13 +74,31 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
         soup = BeautifulSoup(output_content, "html.parser")
 
+        def to_toolbar_string(tb):
+            """ returns the selecte toolbar options """
+            opts = ""
+            if tb.pages:
+                opts += "pages "
+            if tb.zoom:
+                opts += "zoom "
+            if tb.layers:
+                opts += "layers "
+            if tb.lightbox:
+                opts += "lightbox"
+            return opts
+
+        # Diagram config options needs to match 1:1 with the options from drawio
+        # https://www.drawio.com/doc/faq/embed-html-options
         diagram_config = {
-            "toolbar": "zoom" if self.config.toolbar else None,
-            "tooltips": "1" if self.config.tooltips else "0",
+            "toolbar": to_toolbar_string(self.config.toolbar),
+            "toolbar-nohide": self.config.toolbar.no_hide,
+            "toolbar-position": self.config.toolbar.position,
+            "tooltips": self.config.tooltips,
             "border": self.config.border + 5,
             "resize": "1",
             "edit": "_blank" if self.config.edit else None,
             "highlight": self.config.highlight if self.config.highlight else None,
+            "target": self.config.target,
         }
 
         # search for images using drawio extension
@@ -94,6 +116,9 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         path = Path(page.file.abs_dest_path).parent
 
         for diagram in diagrams:
+            if self.config.toolbar.set_title_to_filename:
+                diagram_config["title"] = diagram["src"].split('/')[-1]
+
             if re.search("^https?://", diagram["src"]):
                 mxgraph = BeautifulSoup(
                     DrawioPlugin.substitute_with_url(diagram_config, diagram["src"]),
