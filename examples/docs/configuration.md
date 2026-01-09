@@ -31,6 +31,13 @@ plugins:
       # based on the selected theme. Supports classic mkdocs and mkdocs-material.
       darkmode: true
 
+      # Set the color of hyperlink highlighting
+      # When a diagram element has a hyperlink on it, the element is highlighted
+      # on mouse hover over to better indicate a hylerlink is present. This
+      # parameter controls the color of the highlight boarder. If omitted, no
+      # highlighting happens.
+      highlight: "#0000FF"
+
       # Control the looks and behaviour of the toolbar
       toolbar:
         # Display the zoom control (data-toolbar-zoom)
@@ -47,11 +54,14 @@ plugins:
 
         # Do not hide the toolbar when hovering over the diagram
         # (data-toolbar-nohide)
-        nohide: false
+        no_hide: false
 
         # Control the position of the toolbar (top or bottom)
         # (data-toolbar-position)
         position: "top"
+
+        # Set the diagram title in the toolbar to the filename
+        set_title_to_filename: false
 ```
 ## HTML Attributes
 For each global configuration option you can also use the attribute in the diagram itself. This will override the global configuration. Here is an example:

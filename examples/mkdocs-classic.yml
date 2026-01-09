@@ -23,11 +23,18 @@ theme:
 plugins:
     - search
     - drawio:
-        toolbar: true
         tooltips: true
         edit: true
         border: 20
         darkmode: true
+        toolbar:
+          zoom: true
+          pages: true
+          layers: true
+          lightbox: true
+          no_hide: true
+          position: "top"
+          set_title_to_filename: false
     - print-site
 
 
