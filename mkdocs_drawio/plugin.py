@@ -18,13 +18,37 @@ SUB_TEMPLATE = string.Template(
 LOGGER = logging.getLogger("mkdocs.plugins.diagrams")
 
 
+class Toolbar(base.Config):
+    """Configuration options for the toolbar, mostly taken from
+    https://www.drawio.com/doc/faq/embed-html-options
+    """
+
+    pages = c.Type(bool, default=True)
+    """ Display the page selector in the toolbar """
+
+    zoom = c.Type(bool, default=True)
+    """ Display the zoom control in the toolbar """
+
+    layers = c.Type(bool, default=True)
+    """ Display the layers control in the toolbar """
+
+    lightbox = c.Type(bool, default=True)
+    """ Display the open in lightbox control in the toolbar """
+
+    position = c.Choice(["top", "bottom"], default="top")
+    """ Position of the toolbar """
+
+    no_hide = c.Type(bool, default=False)
+    """ Whether to hide the toolbar when the mouse is not over it """
+
+
 class DrawioConfig(base.Config):
     """Configuration options for the Drawio Plugin"""
 
     viewer_js = c.Type(
         str, default="https://viewer.diagrams.net/js/viewer-static.min.js"
     )
-    toolbar = c.Type(bool, default=True)
+    toolbar = c.Type(Toolbar, default=True)
     tooltips = c.Type(bool, default=True)
     border = c.Type(int, default=0)
     edit = c.Type(bool, default=True)
