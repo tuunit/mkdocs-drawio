@@ -71,12 +71,20 @@ Further options are:
 ```yaml
 plugins:
   - drawio:
-      toolbar: true        # control if hovering on a diagram shows a toolbar for zooming or not (default: true)
-      tooltips: true       # control if tooltips will be shown (default: true)
-      edit: true           # control if edit button will be shown in the lightbox view (default: true)
-      border: 10           # increase or decrease the border / margin around your diagrams (default: 0)
-      darkmode: true       # support darkmode. allows for automatic switching between dark and lightmode based on the theme toggle. (default: false)
-      highlight: "#0000FF" # color hyperlinks on mouse hover over (default: no color)
+      tooltips: true       # Enable tooltips on diagram elements
+      border: 5            # Border size / padding around diagrams
+      edit: true           # Enable opening the editor for diagrams
+      darkmode: true       # Enable dark mode support (classic MkDocs and Material)
+      highlight: "#0000FF" # Highlight color for hyperlinks
+      lightbox: true       # Enable opening the lightbox on click
+      toolbar:             # Control the looks and behaviour of the toolbar
+        pages: true        # Display the page selector
+        tags: true         # Display the tags selector
+        zoom: true         # Display the zoom controls
+        layers: true       # Display the layer controls
+        lightbox: true     # Display the lightbox / fullscreen button
+        position: "top"    # Control the position of the toolbar (top or bottom)
+        no_hide: false     # Do not hide the toolbar when not hovering over diagrams
 ```
 
 ## Material Integration
