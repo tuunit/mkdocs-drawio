@@ -8,6 +8,7 @@ nav:
       - Plumbing: plumbing.md
   - Examples:
       - Simple Diagram: "tests/simple-diagram/index.md"
+      - Diagram with styles: "tests/style-diagram/index.md"
       - Error Handling: "tests/error-handling/index.md"
       - Configuration: "tests/configuration/index.md"
       - Code Blocks: "tests/code-blocks/index.md"
