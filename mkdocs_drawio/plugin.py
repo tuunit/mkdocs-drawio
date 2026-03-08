@@ -176,7 +176,10 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
             diagram_style = ""
             if diagram.has_attr("style"):
-                diagram_style = diagram.get("style") 
+                diagram_style = diagram.get("style")
+
+            if diagram.has_attr("zoom"):
+                diagram_config["zoom"] = diagram.get("zoom")
 
             if re.search("^https?://", diagram["src"]):
                 mxgraph = BeautifulSoup(

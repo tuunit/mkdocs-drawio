@@ -9,6 +9,7 @@ nav:
   - Examples:
       - Simple Diagram: "tests/simple-diagram/index.md"
       - Diagram with styles: "tests/style-diagram/index.md"
+      - Resized diagram: "tests/zoom-diagram/index.md"
       - Error Handling: "tests/error-handling/index.md"
       - Configuration: "tests/configuration/index.md"
       - Code Blocks: "tests/code-blocks/index.md"
@@ -40,6 +41,7 @@ plugins:
 
 markdown_extensions:
   - attr_list
+  - admonition
   - pymdownx.superfences
 
 repo_url: https://github.com/tuunit/mkdocs-drawio
