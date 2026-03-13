@@ -4,8 +4,10 @@ import string
 import logging
 from lxml import etree
 from html import escape
+from urllib.parse import unquote
 from pathlib import Path
 from typing import Dict
+from PIL import Image
 from bs4 import BeautifulSoup
 from mkdocs.utils import copy_file
 from mkdocs.plugins import BasePlugin
@@ -146,7 +148,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
         # search for images using drawio extension
         diagrams = soup.find_all(
-            "img", src=re.compile(r".*\.drawio(.svg)?$", re.IGNORECASE)
+            "img", src=re.compile(r".*\.drawio(\.svg|\.png)?$", re.IGNORECASE)
         )
         if len(diagrams) == 0:
             return output_content
@@ -195,7 +197,12 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
     @staticmethod
     def substitute_with_file(config: Dict, path: Path, src: str, page: str) -> str:
         try:
-            diagram_xml = etree.parse(path.joinpath(src).resolve())
+            if src.endswith(".png"):
+                img = Image.open(path.joinpath(path, src))
+                xml_data = unquote(img.info.get("mxfile"))
+                diagram_xml = etree.fromstring(xml_data.encode())
+            else:
+                diagram_xml = etree.parse(path.joinpath(src).resolve())
         except Exception as e:
             LOGGER.error(
                 f"Error: Could not parse diagram file '{src}' on path '{path}': {e}"
