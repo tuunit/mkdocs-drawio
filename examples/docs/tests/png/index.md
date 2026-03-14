@@ -14,9 +14,14 @@ If the PNG file contains no mxfile information, then it'll fail and fall back to
 
 ![](missing-mxfile.drawio.png)
 
+With the following server error:
+
+```bash
+ERROR   -  Error: Could not parse diagram file '../tests/png/missing-mxfile.drawio.png' on path '/tmp/mkdocs_3kdph6pm/print_page': argument of type 'NoneType' is not iterable
+```
+
 === "Markdown"
 
 ```markdown
 ![](test.drawio.png)
 ```
-
