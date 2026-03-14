@@ -31,8 +31,8 @@ plugins:
       # Enable dark mode support
       # When activated the color scheme for your diagrams is automatically toggled
       # based on the selected theme. Supports classic mkdocs and mkdocs-material.
-      darkmode: true 
-  
+      darkmode: true
+
       # Highlight color for hyperlinks
       # When a diagram element has a hyperlink on it, the element is highlighted
       # on mouse hover over to better indicate a hyperlink is present.
@@ -63,6 +63,9 @@ plugins:
 
         # Do not hide the toolbar when not hovering over diagrams
         no_hide: false
+
+        # Show the diagram title in the toolbar based on the file name
+        show_title: false
 ```
 
 ## Material Integration
@@ -89,6 +92,13 @@ Add `docs/javascripts/drawio-reload.js` to your project:
 
 ```js
 document$.subscribe(({ body }) => {
+  // if drawio toolbar icons/buttons are not showing or missing due to title being longer than the image width
+  // you can set a minimum width for the graph viewer by uncommenting the following line
+  // GraphViewer.prototype.minWidth = 500;
+
   GraphViewer.processElements()
+
+  // required to fix duplicate display of external drawio graphs (via http)
+  reload();
 })
 ```

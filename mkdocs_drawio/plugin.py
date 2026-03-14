@@ -44,6 +44,9 @@ class Toolbar(base.Config):
     no_hide = c.Type(bool, default=False)
     """ Do not hide the toolbar when not hovering over diagrams """
 
+    show_title = c.Type(bool, default=False)
+    """ Will display the original filename as toolbar title if true, no title if false """
+
 
 class DrawioConfig(base.Config):
     """Configuration options for the Drawio Plugin"""
@@ -125,7 +128,14 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         if isinstance(toolbar_config, bool):
             if toolbar_config is False:
                 # Flip all toolbar items off but keep other defaults intact.
-                for key in ("pages", "tags", "zoom", "layers", "lightbox"):
+                for key in (
+                    "pages",
+                    "tags",
+                    "zoom",
+                    "layers",
+                    "lightbox",
+                    "show_title",
+                ):
                     setattr(config, key, False)
 
         if isinstance(toolbar_config, dict):
@@ -161,6 +171,9 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         diagram_config = self.get_diagram_config()
 
         for diagram in diagrams:
+            if self.toolbar_config.show_title:
+                diagram_config["title"] = diagram["src"].split("/")[-1]
+
             if re.search("^https?://", diagram["src"]):
                 mxgraph = BeautifulSoup(
                     DrawioPlugin.substitute_with_url(diagram_config, diagram["src"]),

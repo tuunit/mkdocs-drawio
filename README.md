@@ -3,8 +3,8 @@
 [![Publish Badge](https://github.com/tuunit/mkdocs-drawio/workflows/Publish/badge.svg)](https://github.com/tuunit/mkdocs-drawio/actions)
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
 
-Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then. 
-[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin) 
+Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then.
+[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin)
 
 ## Features
 
@@ -85,6 +85,7 @@ plugins:
         lightbox: true     # Display the lightbox / fullscreen button
         position: "top"    # Control the position of the toolbar (top or bottom)
         no_hide: false     # Do not hide the toolbar when not hovering over diagrams
+        show_title: false  # Show the diagram title in the toolbar based on the file name
 ```
 
 ## Material Integration
@@ -111,7 +112,14 @@ Add `docs/javascripts/drawio-reload.js` to your project:
 
 ```js
 document$.subscribe(({ body }) => {
+  // if drawio toolbar icons/buttons are not showing or missing due to title being longer than the image width
+  // you can set a minimum width for the graph viewer by uncommenting the following line
+  // GraphViewer.prototype.minWidth = 500;
+
   GraphViewer.processElements()
+
+  // required to fix duplicate display of external drawio graphs (via http)
+  reload();
 })
 ```
 
