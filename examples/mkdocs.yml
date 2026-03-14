@@ -8,6 +8,8 @@ nav:
       - Plumbing: plumbing.md
   - Examples:
       - Simple Diagram: "tests/simple-diagram/index.md"
+      - Diagram with styles: "tests/style-diagram/index.md"
+      - Resized diagram: "tests/zoom-diagram/index.md"
       - Error Handling: "tests/error-handling/index.md"
       - Configuration: "tests/configuration/index.md"
       - Code Blocks: "tests/code-blocks/index.md"
@@ -39,6 +41,7 @@ extra_javascript:
 
 markdown_extensions:
   - attr_list
+  - admonition
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true

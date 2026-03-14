@@ -14,7 +14,7 @@ from mkdocs.plugins import BasePlugin
 from mkdocs.config import base, config_options as c
 
 SUB_TEMPLATE = string.Template(
-    '<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="$config"></div>'
+    '<div class="mxgraph" style="max-width:100%;border:1px solid transparent;$style" data-mxgraph="$config"></div>'
 )
 
 LOGGER = logging.getLogger("mkdocs.plugins.diagrams")
@@ -45,6 +45,9 @@ class Toolbar(base.Config):
 
     no_hide = c.Type(bool, default=False)
     """ Do not hide the toolbar when not hovering over diagrams """
+
+    show_title = c.Type(bool, default=False)
+    """ Will display the original filename as toolbar title if true, no title if false """
 
 
 class DrawioConfig(base.Config):
@@ -127,7 +130,14 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         if isinstance(toolbar_config, bool):
             if toolbar_config is False:
                 # Flip all toolbar items off but keep other defaults intact.
-                for key in ("pages", "tags", "zoom", "layers", "lightbox"):
+                for key in (
+                    "pages",
+                    "tags",
+                    "zoom",
+                    "layers",
+                    "lightbox",
+                    "show_title",
+                ):
                     setattr(config, key, False)
 
         if isinstance(toolbar_config, dict):
@@ -163,9 +173,21 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         diagram_config = self.get_diagram_config()
 
         for diagram in diagrams:
+            if self.toolbar_config.show_title:
+                diagram_config["title"] = diagram["src"].split("/")[-1]
+
+            diagram_style = ""
+            if diagram.has_attr("style"):
+                diagram_style = diagram.get("style")
+
+            if diagram.has_attr("zoom"):
+                diagram_config["zoom"] = diagram.get("zoom")
+
             if re.search("^https?://", diagram["src"]):
                 mxgraph = BeautifulSoup(
-                    DrawioPlugin.substitute_with_url(diagram_config, diagram["src"]),
+                    DrawioPlugin.substitute_with_url(
+                        diagram_config, diagram["src"], diagram_style
+                    ),
                     "html.parser",
                 )
             else:
@@ -179,7 +201,11 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
                 mxgraph = BeautifulSoup(
                     DrawioPlugin.substitute_with_file(
-                        diagram_config, path, diagram["src"], diagram_page
+                        diagram_config,
+                        path,
+                        diagram["src"],
+                        diagram_page,
+                        diagram_style,
                     ),
                     "html.parser",
                 )
@@ -189,13 +215,15 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         return str(soup)
 
     @staticmethod
-    def substitute_with_url(config: Dict, url: str) -> str:
+    def substitute_with_url(config: Dict, url: str, style: str) -> str:
         config["url"] = url
 
-        return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
+        return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)), style=style)
 
     @staticmethod
-    def substitute_with_file(config: Dict, path: Path, src: str, page: str) -> str:
+    def substitute_with_file(
+        config: Dict, path: Path, src: str, page: str, style: str
+    ) -> str:
         try:
             if src.endswith(".png"):
                 img = Image.open(path.joinpath(path, src))
@@ -208,11 +236,13 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                 f"Error: Could not parse diagram file '{src}' on path '{path}': {e}"
             )
             config["xml"] = ""
-            return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
+            return SUB_TEMPLATE.substitute(
+                config=escape(json.dumps(config)), style=style
+            )
 
         diagram = DrawioPlugin.parse_diagram(diagram_xml, page)
         config["xml"] = diagram
-        return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)))
+        return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)), style=style)
 
     @staticmethod
     def parse_diagram(data, page_name, src="", path=None) -> str:
