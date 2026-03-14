@@ -56,6 +56,8 @@ plugins:
 
 ## Configuration Options
 
+Full documentation of the configuration options and examples can be found in the [official documentation](https://tuunit.github.io/mkdocs-drawio/)
+
 By default the plugin uses the official url for the minified drawio javascript library. To use a custom source for the drawio viewer you can overwritte the url. This might be useful in airlocked environments.
 
 > If you want to use a self-hosted JavaScript viewer file. You should download the latest version from the [official drawio repo](https://github.com/jgraph/drawio/blob/dev/src/main/webapp/js/viewer-static.min.js).
