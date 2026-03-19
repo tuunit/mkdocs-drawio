@@ -1,13 +1,13 @@
 import re
 import json
 import string
+import png
 import logging
 from lxml import etree
 from html import escape
 from urllib.parse import unquote
 from pathlib import Path
 from typing import Dict
-from PIL import Image
 from bs4 import BeautifulSoup
 from mkdocs.utils import copy_file
 from mkdocs.plugins import BasePlugin
@@ -230,24 +230,31 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
     def retrieve_mxfile(
         path: Path, src: str
     ) -> etree._Element | etree._ElementTree | None:
-        # Handle PNG files
-        if src.endswith(".png"):
-            img = Image.open(path.joinpath(path, src))
+        # Get filepath
+        filepath = path.joinpath(src).resolve()
 
-            # Extract mxfile data from PNG
-            mxfile_metadata = img.info.get("mxfile")
+        # Handle non-PNG files
+        if not src.lower().endswith(".png"):
+            return etree.parse(filepath)
 
-            # If none exists, handle it gracefully
-            if mxfile_metadata is None:
-                LOGGER.warning(
-                    f"Warning: PNG file '{src}' on path '{path}' missing mxfile metadata"
-                )
-                return None
+        reader = png.Reader(filename=filepath)
 
-            xml_data = unquote(mxfile_metadata)
-            return etree.fromstring(xml_data.encode())
-        else:
-            return etree.parse(path.joinpath(src).resolve())
+        mxfile_metadata = None
+        for chunk in reader.chunks():
+            if chunk[0] == b"tEXt":
+                key, value = chunk[1].split(b"\x00", 1)
+                if key == b"mxfile":
+                    mxfile_metadata = value.decode("latin-1")
+
+        # If none exists, handle it gracefully
+        if mxfile_metadata is None:
+            LOGGER.warning(
+                f"Warning: PNG file '{src}' on path '{path}' missing mxfile metadata"
+            )
+            return None
+
+        xml_data = unquote(mxfile_metadata)
+        return etree.fromstring(xml_data.encode())
 
     @staticmethod
     def substitute_with_url(config: Dict, url: str, style: str) -> str:
