@@ -18,6 +18,7 @@ nav:
       - Pagging: "tests/pagging/index.md"
       - External URL: "tests/external-url/index.md"
       - SVG Diagram: "tests/svg/index.md"
+      - PNG Diagram: "tests/png/index.md"
       - Hyperlinks: "tests/hyperlinks/index.md"
 
 theme:

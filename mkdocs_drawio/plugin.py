@@ -1,9 +1,11 @@
 import re
 import json
 import string
+import png
 import logging
 from lxml import etree
 from html import escape
+from urllib.parse import unquote
 from pathlib import Path
 from typing import Dict
 from bs4 import BeautifulSoup
@@ -156,7 +158,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
         # search for images using drawio extension
         diagrams = soup.find_all(
-            "img", src=re.compile(r".*\.drawio(.svg)?$", re.IGNORECASE)
+            "img", src=re.compile(r".*\.drawio(\.svg|\.png)?$", re.IGNORECASE)
         )
         if len(diagrams) == 0:
             return output_content
@@ -182,35 +184,77 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                 diagram_config["zoom"] = diagram.get("zoom")
 
             if re.search("^https?://", diagram["src"]):
-                mxgraph = BeautifulSoup(
-                    DrawioPlugin.substitute_with_url(
-                        diagram_config, diagram["src"], diagram_style
-                    ),
-                    "html.parser",
+                mxgraph = DrawioPlugin.substitute_with_url(
+                    diagram_config, diagram["src"], diagram_style
                 )
             else:
-                diagram_page = ""
+                try:
+                    mxfile_xml = DrawioPlugin.retrieve_mxfile(path, diagram["src"])
 
-                # Use page attribute instead of alt if it is set
-                if diagram.has_attr("page"):
-                    diagram_page = diagram.get("page")
-                else:
-                    diagram_page = diagram.get("alt")
+                    # None is returned when PNG has no mxfile data - fallback to displaying PNG
+                    if mxfile_xml is None:
+                        continue
 
-                mxgraph = BeautifulSoup(
-                    DrawioPlugin.substitute_with_file(
+                    diagram_page = ""
+
+                    # Use page attribute instead of alt if it is set
+                    if diagram.has_attr("page"):
+                        diagram_page = diagram.get("page")
+                    else:
+                        diagram_page = diagram.get("alt")
+
+                    mxgraph = DrawioPlugin.substitute_with_file(
+                        mxfile_xml,
                         diagram_config,
-                        path,
-                        diagram["src"],
                         diagram_page,
                         diagram_style,
-                    ),
-                    "html.parser",
-                )
+                    )
+                except Exception as e:
+                    LOGGER.error(
+                        f"Error: Could not parse diagram file '{diagram["src"]}' on path '{path}': {e}"
+                    )
+                    diagram_config["xml"] = ""
+                    mxgraph = SUB_TEMPLATE.substitute(
+                        config=escape(json.dumps(diagram_config)), style=diagram_style
+                    )
 
-            diagram.replace_with(mxgraph)
+            mxgraph_soup = BeautifulSoup(
+                mxgraph,
+                "html.parser",
+            )
+            diagram.replace_with(mxgraph_soup)
 
         return str(soup)
+
+    @staticmethod
+    def retrieve_mxfile(
+        path: Path, src: str
+    ) -> etree._Element | etree._ElementTree | None:
+        # Get filepath
+        filepath = path.joinpath(src).resolve()
+
+        # Handle non-PNG files
+        if not src.lower().endswith(".png"):
+            return etree.parse(filepath)
+
+        reader = png.Reader(filename=filepath)
+
+        mxfile_metadata = None
+        for chunk in reader.chunks():
+            if chunk[0] == b"tEXt":
+                key, value = chunk[1].split(b"\x00", 1)
+                if key == b"mxfile":
+                    mxfile_metadata = value.decode("latin-1")
+
+        # If none exists, handle it gracefully
+        if mxfile_metadata is None:
+            LOGGER.warning(
+                f"Warning: PNG file '{src}' on path '{path}' missing mxfile metadata"
+            )
+            return None
+
+        xml_data = unquote(mxfile_metadata)
+        return etree.fromstring(xml_data.encode())
 
     @staticmethod
     def substitute_with_url(config: Dict, url: str, style: str) -> str:
@@ -220,20 +264,13 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
     @staticmethod
     def substitute_with_file(
-        config: Dict, path: Path, src: str, page: str, style: str
+        mxfile_xml: etree._Element, config: Dict, page: str, style: str
     ) -> str:
-        try:
-            diagram_xml = etree.parse(path.joinpath(src).resolve())
-        except Exception as e:
-            LOGGER.error(
-                f"Error: Could not parse diagram file '{src}' on path '{path}': {e}"
-            )
-            config["xml"] = ""
-            return SUB_TEMPLATE.substitute(
-                config=escape(json.dumps(config)), style=style
-            )
+        if mxfile_xml is not None:
+            diagram = DrawioPlugin.parse_diagram(mxfile_xml, page)
+        else:
+            diagram = ""
 
-        diagram = DrawioPlugin.parse_diagram(diagram_xml, page)
         config["xml"] = diagram
         return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)), style=style)
 
