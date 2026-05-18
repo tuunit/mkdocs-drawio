@@ -211,7 +211,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                     )
                 except Exception as e:
                     LOGGER.error(
-                        f"Error: Could not parse diagram file '{diagram["src"]}' on path '{path}': {e}"
+                        f"Error: Could not parse diagram file '{diagram['src']}' on path '{path}': {e}"
                     )
                     diagram_config["xml"] = ""
                     mxgraph = SUB_TEMPLATE.substitute(
