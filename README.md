@@ -2,6 +2,7 @@
 
 [![Publish Badge](https://github.com/tuunit/mkdocs-drawio/workflows/Publish/badge.svg)](https://github.com/tuunit/mkdocs-drawio/actions)
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/mkdocs-drawio)
 
 Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then.
 [Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin)
