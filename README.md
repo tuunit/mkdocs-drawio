@@ -1,5 +1,7 @@
 # MkDocs Plugin for embedding Drawio files
 
+<img width="256" height="256" alt="Image" src="https://github.com/user-attachments/assets/fb25d409-38eb-4e1a-90e8-6db78999514e" />
+
 [![Publish Badge](https://github.com/tuunit/mkdocs-drawio/workflows/Publish/badge.svg)](https://github.com/tuunit/mkdocs-drawio/actions)
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/mkdocs-drawio)
