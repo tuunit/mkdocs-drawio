@@ -9,7 +9,7 @@ from urllib.parse import unquote
 from pathlib import Path
 from typing import Dict
 from bs4 import BeautifulSoup
-from mkdocs.utils import copy_file
+from mkdocs.utils import copy_file, normalize_url
 from mkdocs.plugins import BasePlugin
 from mkdocs.config import base, config_options as c
 
@@ -164,7 +164,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
             return output_content
 
         # add drawio library to body
-        lib = soup.new_tag("script", src=self.config.viewer_js)
+        lib = soup.new_tag("script", src=normalize_url(self.config.viewer_js, page))
         soup.body.append(lib)
 
         # substitute images with embedded drawio diagram
