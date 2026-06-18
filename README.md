@@ -65,7 +65,7 @@ By default the plugin uses the official url for the minified drawio javascript l
 
 > If you want to use a self-hosted JavaScript viewer file. You should download the latest version from the [official drawio repo](https://github.com/jgraph/drawio/blob/dev/src/main/webapp/js/viewer-static.min.js).
 
-Self-hosted viewer paths can be configured as site-root paths such as `/js/viewer-static.min.js`. The plugin normalizes them per page, so they also work on versioned deployments such as `mike`.
+Self-hosted viewer paths can be configured as site-root paths such as `js/viewer-static.min.js`. The plugin normalizes them per page, so they also work on versioned deployments such as `mike`.
 
 ```yaml
 plugins:

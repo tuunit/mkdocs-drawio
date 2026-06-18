@@ -4,7 +4,7 @@
 
 By default the plugin uses the official url for the minified drawio javascript library. To use a custom source for the drawio viewer you can overwritte the url. This might be useful in airlocked environments.
 
-Self-hosted viewer paths can be configured as site-root paths such as `/js/viewer-static.min.js`. The plugin normalizes them per page, so they also work on versioned deployments such as `mike`.
+Self-hosted viewer paths can be configured as site-root paths such as `js/viewer-static.min.js`. The plugin normalizes them per page, so they also work on versioned deployments such as `mike`.
 
 ```yaml
 plugins:
