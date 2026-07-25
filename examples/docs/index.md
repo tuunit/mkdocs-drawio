@@ -2,21 +2,20 @@
 
 This plugin allows you to embed draw.io diagrams in your MkDocs documentation. It is compatible with most MkDocs themes, but specifically tested with the Material theme and the MkDocs default theme.
 
-Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then. 
-[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin) 
+<img width="256" height="256" alt="Image" src="https://github.com/user-attachments/assets/fb25d409-38eb-4e1a-90e8-6db78999514e" />
 
 ## Installation
 
-Install the plugin using pip or poetry:
+Install the plugin with pip:
 
 ```bash
 pip install mkdocs-drawio
 ```
 
-or
+If you are managing your MkDocs project with uv, use:
 
 ```bash
-poetry add mkdocs-drawio
+uv add mkdocs-drawio
 ```
 
 Then add the plugin to your `mkdocs.yml`:
@@ -38,7 +37,6 @@ The currently supported features are:
 * Dark Mode 🕶️
 
 ## Usage
-
 
 Simply add an image as you would normally do in markdown:
 
@@ -63,3 +61,9 @@ Additionally this plugin supports multi page diagrams by using the `alt` text to
 ![Page-2](my-diagram.drawio)
 ![my-custom-page-name](my-diagram.drawio)
 ```
+
+
+## Project History
+
+Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then. 
+[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin) 

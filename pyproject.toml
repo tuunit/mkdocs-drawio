@@ -1,50 +1,46 @@
-[tool.poetry]
+[project]
 name = "mkdocs-drawio"
-version = "1.16.2"
+version = "1.16.3"
 description = "MkDocs plugin for embedding Drawio files"
-authors = [
-    "Jan Larwig <jan@larwig.com>",
-    "Yves Chevallier <yves.chevallier@heig-vd.ch>",
-    "Sergey Lukin <onixpro@gmail.com>"
-]
-license = "MIT"
 readme = "README.md"
-repository = "https://github.com/tuunit/mkdocs-drawio/"
-homepage = "https://github.com/tuunit/mkdocs-drawio/"
-keywords = [
-    "mkdocs", "plugin", "markdown", "drawio"
+license = "MIT"
+authors = [
+    { name = "Jan Larwig", email = "jan@larwig.com" },
+    { name = "Sergey Lukin", email = "onixpro@gmail.com" },
 ]
-packages = [
-    { include = "mkdocs_drawio" },
+requires-python = ">=3.9,<4.0"
+dependencies = [
+    "requests>=2.0",
+    "jinja2>=3.0",
+    "beautifulsoup4>=4.0",
+    "lxml>=4.8",
+    "mkdocs>=1.4",
+    "pypng>=0.20220715.0",
 ]
-include = [
-    "mkdocs_drawio/css/*.css",
-    "mkdocs_drawio/js/*.js",
-]
+keywords = ["mkdocs", "plugin", "markdown", "drawio"]
 
-[tool.poetry.dependencies]
-python = ">=3.8.0,<4.0"
-requests = ">=2.0"
-Jinja2 = ">=3.0"
-pypng = "=0.20220715.0"
-beautifulsoup4 = ">=4.0"
-lxml = ">=4.8"
-mkdocs = ">=1.4"
+[project.urls]
+Homepage = "https://tuunit.github.io/mkdocs-drawio/"
+Repository = "https://github.com/tuunit/mkdocs-drawio/"
 
-[tool.poetry.group.dev.dependencies]
-python = ">=3.8.0,<4.0"
-black = ">=24.0"
-ruff = "^0.9.2"
-mkdocs-print-site-plugin = "^2.6.0"
-mkdocs-material = "^9.5.50"
+[project.entry-points."mkdocs.plugins"]
+drawio = "mkdocs_drawio.plugin:DrawioPlugin"
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "ruff>=0.12.5",
+    "mkdocs-print-site-plugin>=2.7.3",
+    "mkdocs-material>=9.6.15",
+]
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.plugins."mkdocs.plugins"]
-drawio = 'mkdocs_drawio.plugin:DrawioPlugin'
+requires = ["setuptools>=80.9.0"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["mkdocs_drawio*"]
-exclude = ["example*"]
+exclude = ["examples*"]
+
+[tool.setuptools.package-data]
+mkdocs_drawio = ["css/*.css", "js/*.js"]
