@@ -6,8 +6,7 @@
 [![PyPI](https://img.shields.io/pypi/v/mkdocs-drawio)](https://pypi.org/project/mkdocs-drawio/)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/mkdocs-drawio)
 
-Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then.
-[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin)
+See the [official docs](https://tuunit.github.io/mkdocs-drawio/) and the [live example page](https://tuunit.github.io/mkdocs-drawio/tests/simple-diagram/).
 
 ## Features
 
@@ -44,10 +43,16 @@ Or use the page attribute:
 
 ## Setup
 
-Install plugin using pip:
+Install the plugin with pip:
 
 ```bash
 pip install mkdocs-drawio
+```
+
+If you are managing your MkDocs project with uv, use:
+
+```bash
+uv add mkdocs-drawio
 ```
 
 Add the plugin to your `mkdocs.yml`
@@ -163,12 +168,16 @@ Its a bit of a workaround as it listens for all events on the page and retrigger
 
 ## Contribution guide
 
-1. Setup a virtual environment: `python3 -m venv venv && source venv/bin/activate`
-2. Install poetry: `pip install poetry`
-3. Install dependencies and current version: `poetry install`
-4. Make your desired changes
-5. Add a test for your changes in the `example` directory
-6. Test your changes by starting `mkdocs serve` in the `example` directory
-7. Increase the version in `pyproject.toml`
-8. Make sure `poetry run ruff check .` and `poetry run black --check .` passing
-9. Open your pull request ✨️
+1. Install uv and use Python 3.9 or newer.
+2. Install dependencies and the current project: `uv sync --group dev`
+3. Make your desired changes.
+4. Add a test for your changes in the `examples` directory.
+5. Test your changes with `uv run mkdocs serve -f examples/mkdocs.yml`
+6. Increase the version in `pyproject.toml`.
+7. Make sure `uv run ruff check .` and `uv run black --check .` pass.
+8. Open your pull request ✨️
+
+## Project History
+
+Sergey ([onixpro](https://github.com/onixpro)) is the original creator of this plugin but since his repository isn't maintained anymore we forked it on the 19th December of 2023 and have been keeping it up-to-date and expanding on the features since then. 
+[Buy Sergey a ☕](https://www.buymeacoffee.com/SergeyLukin) 

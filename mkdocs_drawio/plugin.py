@@ -1,17 +1,20 @@
-import re
+from __future__ import annotations
+
 import json
-import string
-import png
 import logging
-from lxml import etree
+import re
+import string
 from html import escape
-from urllib.parse import unquote
 from pathlib import Path
-from typing import Dict
+from urllib.parse import unquote
+
+import png
 from bs4 import BeautifulSoup
-from mkdocs.utils import copy_file, normalize_url
+from lxml import etree
+from mkdocs.config import base
+from mkdocs.config import config_options as c
 from mkdocs.plugins import BasePlugin
-from mkdocs.config import base, config_options as c
+from mkdocs.utils import copy_file, normalize_url
 
 SUB_TEMPLATE = string.Template(
     '<div class="mxgraph" style="max-width:100%;border:1px solid transparent;$style" data-mxgraph="$config"></div>'
@@ -89,7 +92,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
     Plugin for embedding Drawio Diagrams into your MkDocs
     """
 
-    def get_diagram_config(self) -> Dict:
+    def get_diagram_config(self) -> dict:
         """Build diagram config using only global plugin settings."""
 
         toolbar_items = []
@@ -127,18 +130,17 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         config = Toolbar()
 
         # Bool means enable defaults or disable completely.
-        if isinstance(toolbar_config, bool):
-            if toolbar_config is False:
-                # Flip all toolbar items off but keep other defaults intact.
-                for key in (
-                    "pages",
-                    "tags",
-                    "zoom",
-                    "layers",
-                    "lightbox",
-                    "show_title",
-                ):
-                    setattr(config, key, False)
+        if isinstance(toolbar_config, bool) and toolbar_config is False:
+            # Flip all toolbar items off but keep other defaults intact.
+            for key in (
+                "pages",
+                "tags",
+                "zoom",
+                "layers",
+                "lightbox",
+                "show_title",
+            ):
+                setattr(config, key, False)
 
         if isinstance(toolbar_config, dict):
             # Load values through mkdocs config validation to respect defaults.
@@ -209,7 +211,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                         diagram_page,
                         diagram_style,
                     )
-                except Exception as e:
+                except (OSError, ValueError, etree.LxmlError) as e:
                     LOGGER.error(
                         f"Error: Could not parse diagram file '{diagram['src']}' on path '{path}': {e}"
                     )
@@ -257,14 +259,14 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         return etree.fromstring(xml_data.encode())
 
     @staticmethod
-    def substitute_with_url(config: Dict, url: str, style: str) -> str:
+    def substitute_with_url(config: dict, url: str, style: str) -> str:
         config["url"] = url
 
         return SUB_TEMPLATE.substitute(config=escape(json.dumps(config)), style=style)
 
     @staticmethod
     def substitute_with_file(
-        mxfile_xml: etree._Element, config: Dict, page: str, style: str
+        mxfile_xml: etree._Element, config: dict, page: str, style: str
     ) -> str:
         if mxfile_xml is not None:
             diagram = DrawioPlugin.parse_diagram(mxfile_xml, page)
