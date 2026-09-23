@@ -7,10 +7,11 @@ import string
 from html import escape
 from pathlib import Path
 from urllib.parse import unquote
+from xml.etree import ElementTree as ET
 
+import defusedxml.ElementTree as defused_ET
 import png
 from bs4 import BeautifulSoup
-from lxml import etree
 from mkdocs.config import base
 from mkdocs.config import config_options as c
 from mkdocs.plugins import BasePlugin
@@ -211,7 +212,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                         diagram_page,
                         diagram_style,
                     )
-                except (OSError, ValueError, etree.LxmlError) as e:
+                except (OSError, ValueError, ET.ParseError) as e:
                     LOGGER.error(
                         f"Error: Could not parse diagram file '{diagram['src']}' on path '{path}': {e}"
                     )
@@ -229,15 +230,13 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         return str(soup)
 
     @staticmethod
-    def retrieve_mxfile(
-        path: Path, src: str
-    ) -> etree._Element | etree._ElementTree | None:
+    def retrieve_mxfile(path: Path, src: str) -> ET.Element | ET.ElementTree | None:
         # Get filepath
         filepath = path.joinpath(src).resolve()
 
         # Handle non-PNG files
         if not src.lower().endswith(".png"):
-            return etree.parse(filepath)
+            return defused_ET.parse(filepath)
 
         reader = png.Reader(filename=filepath)
 
@@ -256,7 +255,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
             return None
 
         xml_data = unquote(mxfile_metadata)
-        return etree.fromstring(xml_data.encode())
+        return defused_ET.fromstring(xml_data.encode())
 
     @staticmethod
     def substitute_with_url(config: dict, url: str, style: str) -> str:
@@ -266,7 +265,7 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
     @staticmethod
     def substitute_with_file(
-        mxfile_xml: etree._Element, config: dict, page: str, style: str
+        mxfile_xml: ET.Element, config: dict, page: str, style: str
     ) -> str:
         if mxfile_xml is not None:
             diagram = DrawioPlugin.parse_diagram(mxfile_xml, page)
@@ -278,30 +277,44 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
 
     @staticmethod
     def parse_diagram(data, page_name, src="", path=None) -> str:
-        mxfile_nodes = data.xpath("//mxfile")
+        # data may be an ElementTree (from parse()) or an Element (from fromstring())
+        root = data.getroot() if isinstance(data, ET.ElementTree) else data
 
-        if not mxfile_nodes:
-            if data.xpath("//*[local-name()='svg']") is not None:
-                return etree.tostring(data, encoding=str)
+        # Find mxfile node — handle both root-is-mxfile and nested cases
+        if root.tag == "mxfile":
+            mxfile = root
+        else:
+            mxfile = root.find(".//mxfile")
+
+        if mxfile is None:
+            # Check if it's an SVG
+            tag = root.tag
+            # strip namespace if present: {ns}svg -> svg
+            local = tag.split("}")[-1] if "}" in tag else tag
+            if local == "svg":
+                return ET.tostring(root, encoding="unicode")
             return ""
 
-        mxfile = mxfile_nodes[0]
-
         if not page_name:
-            return etree.tostring(mxfile, encoding=str)
+            return ET.tostring(mxfile, encoding="unicode")
 
-        page = mxfile.xpath(f"//diagram[@name='{page_name}']")
-        if len(page) == 1:
-            parser = etree.XMLParser()
-            result = parser.makeelement(mxfile.tag, mxfile.attrib)
-            result.append(page[0])
-            return etree.tostring(result, encoding=str)
+        # Find diagram by name attribute
+        pages = [
+            child
+            for child in mxfile
+            if child.tag == "diagram" and child.get("name") == page_name
+        ]
+
+        if len(pages) == 1:
+            result = ET.Element(mxfile.tag, mxfile.attrib)
+            result.append(pages[0])
+            return ET.tostring(result, encoding="unicode")
 
         LOGGER.warning(
-            f"Warning: Found {len(page)} results for page name '{page_name}' "
+            f"Warning: Found {len(pages)} results for page name '{page_name}' "
             f"falling back to first page."
         )
-        return etree.tostring(mxfile, encoding=str)
+        return ET.tostring(mxfile, encoding="unicode")
 
     def on_config(self, config: base.Config):
         # Prepare toolbar configuration
