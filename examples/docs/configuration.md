@@ -72,9 +72,7 @@ plugins:
 
 ## Material Integration
 
-If you are using the Material Theme and want to use the [instant-loading](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/?h=instant#instant-loading) feature. You will have to configure the following:
-
-In your `mkdocs.yaml`:
+The [instant-loading](https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/?h=instant#instant-loading) feature of Material works out of the box when `navigation.instant` is enabled:
 
 ```yaml
 theme:
@@ -84,23 +82,8 @@ theme:
 
 plugins:
   - drawio
-
-extra_javascript:
-  - https://viewer.diagrams.net/js/viewer-static.min.js
-  - javascripts/drawio-reload.js
 ```
 
-Add `docs/javascripts/drawio-reload.js` to your project:
+The plugin loads the viewer only on pages with diagrams and renders each diagram once after every navigation.
 
-```js
-document$.subscribe(({ body }) => {
-  // if drawio toolbar icons/buttons are not showing or missing due to title being longer than the image width
-  // you can set a minimum width for the graph viewer by uncommenting the following line
-  // GraphViewer.prototype.minWidth = 500;
-
-  GraphViewer.processElements()
-
-  // required to fix duplicate display of external drawio graphs (via http)
-  reload();
-})
-```
+If toolbar buttons are missing because the title is wider than the diagram, set a minimum width in your own script with `GraphViewer.prototype.minWidth = 500;`.
