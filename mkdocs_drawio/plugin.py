@@ -166,7 +166,9 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
             return output_content
 
         # add drawio library to body
-        lib = soup.new_tag("script", src=normalize_url(self.config.viewer_js, page))
+        # page-relative, so a relative viewer_js works from any depth (and with mike)
+        viewer_url = normalize_url(self.config.viewer_js, page)
+        lib = soup.new_tag("script", src=viewer_url)
         soup.body.append(lib)
 
         # substitute images with embedded drawio diagram
@@ -224,6 +226,8 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
                 mxgraph,
                 "html.parser",
             )
+            # lets drawio-instant.js load the viewer after instant navigation
+            mxgraph_soup.find("div")["data-viewer-js"] = viewer_url
             diagram.replace_with(mxgraph_soup)
 
         return str(soup)
@@ -311,6 +315,9 @@ class DrawioPlugin(BasePlugin[DrawioConfig]):
         self.base = Path(__file__).parent
         self.css = []
         self.js = []
+
+        if "navigation.instant" in (config.theme.get("features") or []):
+            self.js.append("js/drawio-instant.js")
 
         if self.config.darkmode:
             self.css.append("css/drawio-darkmode.css")

@@ -35,10 +35,6 @@ theme:
         icon: material/lightbulb-outline
         name: Switch to light mode
 
-extra_javascript:
-  - https://viewer.diagrams.net/js/viewer-static.min.js
-  - javascripts/drawio-reload.js
-
 markdown_extensions:
   - attr_list
   - admonition
